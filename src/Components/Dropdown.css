@@ -1,0 +1,60 @@
+
+.Trigger {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 2px;
+
+    width : fit-content;
+    height: inherit;
+}
+
+.Content {
+	background-color: var(--content-bg-color);
+	border-radius: 10px;
+	border-width: 0px;
+	box-shadow: 4px 4px 4px var(--shadow-color);
+
+	position: absolute;
+	top : 100%;
+	left: 0%;
+	
+	margin: 0.25rem;
+	padding: 0.5rem 0.5rem;
+
+    display: flex;
+    flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+
+    min-width:  max-content;
+    min-height: max-content;
+
+	font-weight: 700;
+	color: var(--text-color);
+
+	transition: opacity 0.2s ease;
+	/* animation-duration: 250ms;
+	animation-timing-function: ease; */
+    z-index: 100;
+}
+
+/*
+@keyframes enterFromLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+@keyframes enterFromRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+@keyframes exitToLeft {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+@keyframes exitToRight {
+    from { transform: translateX(0); }
+    to { transform: translateX(100%); }
+}
+*/

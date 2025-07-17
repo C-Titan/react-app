@@ -1,0 +1,41 @@
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.headerClass {
+	background: var(--color-header-bg);
+
+	margin: 0rem;
+	padding: var(--edge-gap-max);
+	padding-top: var(--edge-gap);
+	padding-bottom: var(--edge-gap);
+
+	width: 100%;
+
+	z-index: var(--z-index-header);
+}
+
+/* ========= Navigation ========= */
+.logoContainer {
+	width: 10rem;
+}
+.logo {
+	width: 100%;
+	aspect-ratio: 18 / 5;
+}
+
+.navButton {
+	background-color: var(--color-button-bg);
+	display: flex;
+}
+
+@media (width < 900px) {
+	
+}
+
+.auth-buttons {
+	display: flex;
+}

@@ -1,0 +1,120 @@
+/* GLOBAL STYLES */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1000px) {
+}
+
+#root { width: 100vw; }
+
+:root {
+	/* Screen Sizes */
+	--large-scr: 1000px;
+	--med-scr: 700px;
+	--small-scr: 600px;
+
+	/* Fonts */
+	--font-family: sans-serif;
+
+	--font-size-mcro: 10px;
+	--font-size-min: 14px;
+	--font-size: 16px;
+	--font-size-max: 20px;
+	--font-size-mega: 24px;
+
+	--font-size-h1: 50px;
+	--font-size-h2: 30px;
+
+	/* UI */
+	--border-radius-mcro: 0.5em;
+	--border-radius-min: 1em;
+	--border-radius: 2em;
+	--border-radius-max: 3em;
+	--border-radius-mega: 5em;
+
+	--edge-gap-mcro: 0.25%;
+	--edge-gap-min: 0.5%;
+	--edge-gap: 1%;
+	--edge-gap-max: 3%;
+	--edge-gap-mega: 5%;
+
+	--z-index-header: 200;
+	--z-index-main: 100;
+	--z-index-footer: 900;
+	--z-index-overlay: 1000;
+
+	/* VFX */
+	--box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+	--box-shadow-card: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+		0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	--box-shadow-buttons: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
+
+	/* ANIMATIONS */
+	--transition-slow: 0.5s ease;
+	--transition-med: 0.3s ease;
+	--transition-fast: 0.2s ease;
+}
+
+/* ========= Themes ========= */
+[data-theme = "dark"] {
+	/* Header/Footer Backgrounds */
+	--color-bg: hsl(30, 20%, 21%);
+	--color-bg-accent: hsla(30, 25%, 39%, 0.361);
+	--color-header-bg: hsl(15, 14%, 11%);
+	--color-footer-bg: hsl(60, 2%, 8%);
+
+	/* Buttons */
+	--color-button-bg: hsl(25, 77%, 51%);
+	--color-button-accent: hsl(35, 90%, 60%);
+	--color-button-focus: hsl(15, 40%, 40%);
+
+	/* Text */
+	--color-heading-text: hsl(0, 0%, 100%);
+	--color-normal-text: hsl(0, 0%, 100%);
+	--color-normal-text-dark: hsl(0, 0%, 100%);
+	--color-button-text: hsl(0, 0%, 100%);
+	--color-links: hsl(298, 70%, 77%);
+	--color-links-grey: hsla(0, 0%, 84%, 0.486);
+
+	/* Menus */
+	--color-dropdown-menu: hsl(30, 20%, 21%);
+}
+
+[data-theme = "light"] {
+	/* Header/Footer Backgrounds */
+	--color-bg: hsl(30, 100%, 83%);
+	--color-bg-accent: hsla(30, 26%, 55%, 0.361);
+	--color-header-bg: hsl(15, 100%, 98%);
+	--color-footer-bg: hsl(60, 2%, 8%);
+
+	/* Buttons */
+	--color-button-bg: hsl(25, 77%, 51%);
+	--color-button-accent: hsl(35, 90%, 60%);
+	--color-button-focus: hsl(15, 40%, 40%);
+
+	/* Text */
+	--color-heading-text: hsl(0, 0%, 0%);
+	--color-normal-text: hsl(0, 0%, 0%);
+	--color-normal-text-dark: hsl(0, 0%, 100%);
+	--color-button-text: hsl(0, 0%, 100%);
+	--color-links: hsl(298, 70%, 77%);
+	--color-links-grey: hsla(0, 0%, 84%, 0.486);
+
+	/* Menus */
+	--color-dropdown-menu: hsl(29, 100%, 92%);
+}

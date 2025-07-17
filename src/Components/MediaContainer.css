@@ -1,0 +1,31 @@
+
+.errMessage {
+    color: red;
+    align-items: center;
+    justify-content: center;
+}
+
+.Container { 
+    border-radius: var(--border-radius-mcro); 
+    
+    min-width:  1rem;
+    min-height: 1rem;
+    
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center;
+    
+    overflow: hidden;
+}
+
+.Media {
+    border-radius: inherit; 
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.placeholder {
+    border: 2px dashed #717171;
+    /* background: #717171; */
+}

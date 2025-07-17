@@ -1,0 +1,47 @@
+
+.BackToTop {
+	position: fixed;
+	right:  -1%;
+	bottom: calc(2% + 3.5rem);
+
+	z-index: var(--z-index-overlay);
+	transition: var(--transition-fast);
+
+	@media (width <= 450px) {
+		bottom: calc(2% + 3rem);
+	}
+}
+
+#Button {
+	background: linear-gradient(90deg, var(--color-button-bg), var(--color-button-accent));
+	border-radius: 4rem;
+	border-top-right-radius   : 0%;
+	border-bottom-right-radius: 0%;
+	box-shadow: var(--box-shadow-buttons);
+
+	justify-content: left;
+	font-size: 1.5rem;
+	width : 7rem;
+	aspect-ratio: 2 / 1;
+    padding-left: 1rem;
+
+	position: relative;
+	right:  -35%;
+	@media (width <= 450px) {
+		transform: scale(0.8);
+		right: -4rem;
+	}
+}
+
+#Button:hover {
+    transform: translateX(-20%);
+	@media (width <= 450px) {
+        transform: translateX(-40%);
+	}
+}
+#Button:active {
+    transform: translateX(-15%);
+	@media (width <= 450px) {
+        transform: translateX(-35%);
+	}
+}

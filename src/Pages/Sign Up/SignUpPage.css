@@ -1,0 +1,84 @@
+*,
+* > * {
+	transition: all 0.3s ease;
+}
+
+.SignUpPage {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background-color: #f7fafc;
+	color: #111;
+
+	@media (prefers-color-scheme: dark) {
+		background-color: #1a202c;
+		color: #f7fafc;
+	}
+}
+
+.Card {
+	background-color: #83a2e2;
+	border-radius: 1rem;
+	box-shadow: 10px 10px 10px #0000000f;
+
+	width: 30rem;
+	max-width: 70%;
+
+	padding: 2rem 3rem 1rem;
+	
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+
+	color: #111;
+
+	@media (width < 600px) {
+		min-width: 90%;
+		padding: 10% 15% 5%;
+		margin: 5%;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		background-color: #202e49;
+		color: #f7fafc;
+	}
+}
+
+.HeaderText {
+	font-weight: 600;
+	font-size: 2rem;
+	text-align: center;
+	color: #202e49;
+
+	@media (prefers-color-scheme: dark) {
+		color: #83a2e2;
+	}
+}
+
+.HeaderSubtext {
+	margin-bottom: 3rem;
+	text-align: center;
+	color: #3e475e;
+
+	@media (prefers-color-scheme: dark) {
+		color: #a2aec7;
+	}
+}
+
+.Form {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 0.5rem;
+	gap: 1rem;
+	color: #111;
+}
+
+.errorMessage {
+	color: #be0909;
+	@media (prefers-color-scheme: dark) {
+		color: #ff5353;
+	}
+}
