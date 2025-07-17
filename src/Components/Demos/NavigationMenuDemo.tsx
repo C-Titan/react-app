@@ -30,7 +30,7 @@ export function NavMenuDemo() {
 					
 					<MenuDropdown/>
 
-					<NavMenu.Link href=""><NavMenu.Item>Button Link</NavMenu.Item></NavMenu.Link>
+					<NavMenu.ItemLink href=""><NavMenu.Item>Button Link</NavMenu.Item></NavMenu.ItemLink>
 
 					<NavMenu.Item title="Cheese"></NavMenu.Item>
 				</NavMenu.List>

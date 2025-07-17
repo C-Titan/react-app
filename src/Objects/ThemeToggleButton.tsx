@@ -2,8 +2,8 @@
 import "./ThemeToggleButton.css";
 import { useEffect, useState } from "react";
 import { Button } from "@/Components/Button";
-import Sun  from '@/assets/svgs/regular/sun.svg';
-import Moon from '@/assets/svgs/regular/moon.svg';
+// import Sun  from '@/assets/svgs/regular/sun.svg';
+// import Moon from '@/assets/svgs/regular/moon.svg';
 // import { ReactComponent as Sun  } from '@/assets/svgs/regular/sun.svg';
 // import { ReactComponent as Moon } from '@/assets/svgs/regular/moon.svg';
 
