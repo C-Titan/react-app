@@ -1,19 +1,22 @@
 
-import "./Pages/Other/GlobalVariables.css";
+import "./GlobalVariables.css";
 // import './index.css';
 
+import HomePage from "./Pages/Home/HomePage";
 // import Login from "./Pages/Log In/LogInPage";
 // import SignUp from "./Pages/Sign Up/SignUpPage";
-// import InputFieldDemo from "./Components/Demos/InputFieldDemo";
+
+// import { ThemeToggleButton } from "./Components/Objects/ThemeToggleButton";
+// import Header from "./Pages/Parts/Header/Header";
 //
 
-import HomePage from "./Pages/Home/HomePage";
 
 function App() {
 	return (
 		<>
+			{/* <ThemeToggleButton/> */}
+			{/* <Header/> */}
 			<HomePage/>
-			{/* <InputFieldDemo/> */}
 			{/* <SignUp/> */}
 		 	{/* <Login/> */}
 		</>

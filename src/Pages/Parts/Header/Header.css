@@ -1,4 +1,3 @@
-
 nav {
 	display: flex;
 	justify-content: space-between;
@@ -9,7 +8,7 @@ nav {
 	background: var(--color-header-bg);
 
 	margin: 0rem;
-	padding: var(--edge-gap-max);
+	padding: var(--edge-gap-4);
 	padding-top: var(--edge-gap);
 	padding-bottom: var(--edge-gap);
 
@@ -33,7 +32,6 @@ nav {
 }
 
 @media (width < 900px) {
-	
 }
 
 .auth-buttons {

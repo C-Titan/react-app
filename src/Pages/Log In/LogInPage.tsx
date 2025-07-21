@@ -1,7 +1,7 @@
 import "./LogInPage.css";
 import React, { useState } from "react";
-import { EmailField, PasswordField } from "@/Components/InputField";
-import { Button } from "@/Components/Button";
+import { EmailField, PasswordField } from "@/Components/Base/InputField";
+import { Button } from "@/Components/Base/Button";
 
 interface LoginProps {
 	onLogin?: (email: string, password: string) => void;
@@ -38,7 +38,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
 					<a href="">Forgot Password</a>
 
 					<br />
-					
+
 					<Button type="submit" variant="default">
 						Log In
 					</Button>

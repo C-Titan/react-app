@@ -1,24 +1,24 @@
 import React, { useId, useState } from "react";
 import "./inputField.css";
 
-//#region Base
+
 export interface FieldProps {
 	id?: string;
 	label?: string;
+	formId?: string;
 
+	type?: "password" | "email" | "color" | "date" | "month" | "tel" | "text";
 	placeholder?: string;
-	type?: "password" | "email" | any;
 	value: string;
-	onChange: (value: string) => void;
 	
 	autoComplete?: string;
 	required?: boolean;
 	useToggle?: boolean;
-	restrictNumeric?: boolean;
-	inputMode?: "none" | "text" | "numeric" | "decimal" | "email" | "tel" | "url";
 
-	// typeCheck?: "email" | "url" | "phone" | "none" | "custom";
-	// typeCheckCustom?: string;
+	restrictNumeric?: boolean;
+	inputMode?: "none" | "text" | "numeric" | "decimal" | "email" | "tel" | "url" | "search";
+
+	onChange: (value: string) => void;
 	
 	ariaLabel?: string;
 	ariaDescribedBy?: string;
@@ -27,6 +27,7 @@ export interface FieldProps {
 	error?: string;
 }
 
+//#region Base
 const Field: React.FC<FieldProps> = ({
 	id,
 	label = '',
@@ -40,9 +41,6 @@ const Field: React.FC<FieldProps> = ({
 	required = true,
 	useToggle = false,
 	restrictNumeric = false,
-	// typeCheck = "none",
-	// typeCheckCustom = ``,
-	inputMode = "text",
 	
 	ariaLabel,
 	ariaDescribedBy,
@@ -50,22 +48,13 @@ const Field: React.FC<FieldProps> = ({
 	hint,
 	error
 }) => {
-	const inputId = useId();
+	const inputId = id || useId();
 	const [show, setShow] = useState(false);
 	const inputType = useToggle ? (show ? 'text' : type) : type;
 
-	// const typeCheckRef: { [key: string] : RegExp } = {
-	// 	"email": /^[^\s]+@[^\s]+\.[^\s]+$/,
-	// 	"url": /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}(:\d+)?(\/[^\s]*)?$/i,
-	// 	"phone": /^\d{3}-\d{3}-\d{4}$/,
-	// 	"none": /.^/,
-	// 	"custom" : new RegExp(typeCheckCustom)
-	// };
-	// const inputTypeCheck: RegExp = typeCheckRef[typeCheck];
-
 	return (
 		<div>
-			{label && <label htmlFor = {id || inputId}>{label}</label>}
+			{label && <label htmlFor={inputId}>{label}</label>}
 			
 			<div className = "Wrapper">
 				<input
@@ -77,7 +66,6 @@ const Field: React.FC<FieldProps> = ({
 					onChange = {(e) => {
 						const val = e.target.value;
 						if (restrictNumeric && /\D/.test(val)) return;
-						// if (inputTypeCheck.test(val)) return;
 						onChange(val);
 					}}
 					
@@ -85,8 +73,6 @@ const Field: React.FC<FieldProps> = ({
 					className = "Field"
 					
 					autoComplete = {autoComplete}
-					inputMode = {restrictNumeric ? 'numeric' : inputMode}
-					pattern = {restrictNumeric ? '[0-9]*' : undefined}
 					
 					aria-label = {ariaLabel || label}
 					aria-describedby = {
@@ -129,7 +115,7 @@ const Field: React.FC<FieldProps> = ({
 //#region Input Fields
 
 //#region PasswordField
-type PasswordFieldProps = Omit<FieldProps, 'restrictNumeric'>
+type PasswordFieldProps = Omit<FieldProps, 'type'>
 export const PasswordField: React.FC<PasswordFieldProps> = ({
 	value = "",
 	onChange,
@@ -140,14 +126,14 @@ export const PasswordField: React.FC<PasswordFieldProps> = ({
 		onChange={onChange}
 		type = "password"
 		placeholder = "••••••••"
-		useToggle = {true}		
+		useToggle = {true}
 		{...props}
 	/>
 );
 //#endregion
 
 //#region EmailField
-type EmailFieldProps = Omit<FieldProps, 'useToggle' | 'restrictNumeric'>
+type EmailFieldProps = Omit<FieldProps, 'useToggle' | "type">
 export const EmailField: React.FC<EmailFieldProps> = ({
 	value = "",
 	onChange,
@@ -156,18 +142,16 @@ export const EmailField: React.FC<EmailFieldProps> = ({
 	<Field
 		value={value}
 		onChange={onChange}
-		type = "email" 
+		type = "email"
 		placeholder = "example@gmail.com"
-		autoComplete = "email" 
-		// typeCheck = "email"
+		autoComplete = "email"
 		{...props}
 	/>
 );
 //#endregion
 
 //#region PinField
-type PinFieldProps = Omit<FieldProps, 'inputMode'>
-// type PinFieldProps = Omit<FieldProps, 'restrictNumeric'>
+type PinFieldProps = FieldProps
 export const PinField: React.FC<PinFieldProps> = ({
 	value = "",
 	onChange,
@@ -179,27 +163,8 @@ export const PinField: React.FC<PinFieldProps> = ({
 		type = "password"
 		placeholder = "****"
 		restrictNumeric = {true}
-		inputMode = "numeric"
 		useToggle = {true}
-		// typeCheck = "phone"
-		{...props}
-	/>
-);
-//#endregion
-
-//#region Text Field
-type TextFieldProps = Omit<FieldProps, 'useToggle' | 'restrictNumeric' | 'required' | 'type'>
-export const TextField: React.FC<TextFieldProps> = ({
-	value = "",
-	onChange,
-	...props
-}) => (
-	<Field
-		value={value}
-		onChange={onChange}
-		type = "text"
-		placeholder = "Your text here..."
-		required = {false}
+		autoComplete="password"
 		{...props}
 	/>
 );
@@ -217,9 +182,30 @@ export const TelField: React.FC<TelFieldProps> = ({
 		onChange={onChange}
 		type = "text"
 		placeholder = "000-000-000"
-		restrictNumeric = {true}
-		inputMode = "tel"
+		// restrictNumeric = {true}
+		// inputMode = "tel"
 		// typeCheck = "phone"
+		{...props}
+	/>
+);
+//#endregion
+
+//#region Text Field
+type TextFieldProps = FieldProps
+export const TextField: React.FC<TextFieldProps> = ({
+	value = "",
+	type = "text",
+	placeholder = "Your text here...",
+	useToggle = false,
+	onChange,
+	...props
+}) => (
+	<Field
+		type = {type}
+		value={value}
+		placeholder = {placeholder}
+		useToggle = {useToggle}
+		onChange={onChange}
 		{...props}
 	/>
 );

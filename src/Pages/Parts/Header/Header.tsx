@@ -1,29 +1,49 @@
-
 import "./Header.css";
-import { NavMenu } from "@/Components/NavigationMenu";
-import { MediaContainer } from "@/Components/MediaContainer";
+import { NavBar } from "@/Components/Base/NavigationBar";
+import { MediaContainer } from "@/Components/Base/MediaContainer";
+import { useEffect } from "react";
 
 export default function Header() {
+	let logoPath = "src/assets/company-logo.png";
+	useEffect(() => {
+		let width = document.documentElement.getAttribute("width");
+
+		if (width === null) return;
+
+		logoPath =
+			width <= "650px"
+				? "src/assets/company-logo-mini.png"
+				: "src/assets/company-logo.png";
+	}, []);
+
 	return (
 		<header className="headerClass">
 			<nav>
-				<MediaContainer.Image 
+				<MediaContainer.Image
 					alt="Logo"
-					mediaSource="src/assets/generic-company-logo.png"
+					mediaSource={logoPath}
 					width="200px"
 					aspectRatio="4/1"
 				/>
 
-				<NavMenu>
-					<NavMenu.Item title="Products"></NavMenu.Item>
-					<NavMenu.ItemLink href="" target="_self">Recources</NavMenu.ItemLink>
-					<NavMenu.ItemLink href="" target="_self">Pricing</NavMenu.ItemLink>
-				</NavMenu>
+				<NavBar>
+					<NavBar.Item title="Products"></NavBar.Item>
+					<NavBar.ItemLink href="" target="_self">
+						Recources
+					</NavBar.ItemLink>
+					<NavBar.ItemLink href="" target="_self">
+						Pricing
+					</NavBar.ItemLink>
+				</NavBar>
 
-				<NavMenu>
-					<NavMenu.ItemLink href="" target="_self">Sign in</NavMenu.ItemLink>
-					<NavMenu.ItemLink href="" target="_self">Get Started</NavMenu.ItemLink>
-				</NavMenu>
+				<NavBar>
+					<NavBar.ItemLink href="" target="_self">
+						Sign in
+					</NavBar.ItemLink>
+					<NavBar.ItemLink href="" target="_self">
+						Get Started
+					</NavBar.ItemLink>
+				</NavBar>
 			</nav>
 		</header>
 	);

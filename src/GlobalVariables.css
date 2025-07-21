@@ -1,0 +1,179 @@
+/* GLOBAL STYLES */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1000px) {
+}
+
+#root {
+	width: 100vw;
+}
+
+:root {
+	/* Fonts */
+	--font-family: sans-serif;
+
+	--font-size: 16px;
+	--font-size-1: calc(var(--font-size) * 0.5);
+	--font-size-2: calc(var(--font-size) * 0.75);
+	--font-size-3: calc(var(--font-size) * 1);
+	--font-size-4: calc(var(--font-size) * 1.25);
+	--font-size-5: calc(var(--font-size) * 1.5);
+	--font-size-6: calc(var(--font-size) * 1.75);
+	--font-size-7: calc(var(--font-size) * 2);
+
+	/* UI */
+	--border-radius-1: 0.5em;
+	--border-radius-2: 1em;
+	--border-radius-3: 2em;
+	--border-radius-4: 3em;
+	--border-radius-5: 5em;
+
+	--edge-gap-1: 0.25%;
+	--edge-gap-2: 0.5%;
+	--edge-gap-3: 1%;
+	--edge-gap-4: 2.5%;
+	--edge-gap-5: 5%;
+
+	--margin-1: 2.5%;
+	--margin-2: 5%;
+	--margin-3: 7.5%;
+	--margin-4: 10%;
+
+	--padding-1: 2.5%;
+	--padding-2: 5%;
+	--padding-3: 7.5%;
+	--padding-4: 10%;
+
+	--z-index-header : 200;
+	--z-index-main   : 100;
+	--z-index-footer : 900;
+	--z-index-overlay: 1000;
+
+	/* VFX */
+	--box-shadow-heavy: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	--box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+	--box-shadow-light: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
+
+	/* ANIMATIONS */
+	--transition-slow: all 0.5s ease;
+	--transition-med : all 0.3s ease;
+	--transition-fast: all 0.2s ease;
+}
+
+:root {
+	--color-primary    : hsl(236, 71%, 85%);
+	--color-secondary  : hsl(235, 85%, 80%);
+	--color-primary-muted  : hsl(235, 80%, 70%);
+	--color-secondary-muted: hsl(235, 10%, 60%);
+
+	--color-accent-highlight: hsl(205, 50%, 50%);
+	--color-accent-mid-high : hsl(220, 50%, 50%);
+	--color-accent          : hsl(235, 50%, 50%);
+	--color-accent-mid-low  : hsl(250, 50%, 25%);
+	--color-accent-shade    : hsl(265, 50%, 25%);
+	--color-accent-secondary-highlight: hsl(90, 50%, 50%);
+	--color-accent-secondary-mid-high : hsl(105, 50%, 50%);
+	--color-accent-secondary          : hsl(125, 50%, 50%);
+	--color-accent-secondary-mid-low  : hsl(140, 50%, 25%);
+	--color-accent-secondary-shade    : hsl(165, 50%, 25%);
+
+	--color-text-def: hsl(240, 100%, 10%);
+	--color-text-h1: hsl(225, 60%, 35%);
+	--color-text-h2: hsl(260, 60%, 35%);
+	--color-text-h3: hsl(285, 60%, 35%);
+	--color-text-link: hsl(225, 50%, 40%);
+	--color-text-link-highlight: hsl(209, 54%, 52%);
+	--color-text-error: hsl(10, 100%, 50%);
+	--color-text-warning: hsl(40, 100%, 50%);
+
+	@media (prefers-color-scheme: dark) {
+		--color-primary  : hsl(235, 30%, 15%);
+		--color-secondary: hsl(235, 15%, 20%);
+		--color-primary-muted  : hsl(235, 20%, 30%);
+		--color-secondary-muted: hsl(235, 10%, 40%);
+		
+		--color-accent-highlight: hsl(205, 50%, 65%);
+		--color-accent-mid-high : hsl(220, 50%, 65%);
+		--color-accent          : hsl(235, 50%, 65%);
+		--color-accent-mid-low  : hsl(250, 50%, 40%);
+		--color-accent-shade    : hsl(265, 50%, 40%);
+		--color-accent-secondary-highlight: hsl(90, 50%, 65%);
+		--color-accent-secondary-mid-high : hsl(105, 50%, 65%);
+		--color-accent-secondary          : hsl(125, 50%, 65%);
+		--color-accent-secondary-mid-low  : hsl(140, 50%, 40%);
+		--color-accent-secondary-shade    : hsl(165, 50%, 40%);
+
+		--color-text-def: hsl(240, 100%, 90%);
+	}
+}
+
+/* ========= Themes ========= */
+[data-theme="dark"] {
+	/* Header/Footer Backgrounds */
+	--color-bg: hsl(30, 20%, 20%);
+	--color-bg-accent: hsla(30, 25%, 39%, 0.361);
+	--color-header-bg: hsl(15, 14%, 11%);
+	--color-footer-bg: hsl(60, 2%, 8%);
+	
+	/* Buttons */
+	--color-button-bg        : hsl(25, 77%, 51%);
+	--color-button-bg-sec    : hsl(25, 66%, 61%);
+	--color-button-focus     : hsl(15, 40%, 40%);
+	--color-button-focus-sec : hsl(15, 40%, 40%);
+	--color-button-accent    : hsl(35, 90%, 60%);
+	--color-button-accent-sec: hsl(35, 84%, 64%);
+
+	/* Text */
+	--color-heading-text: hsl(0, 0%, 100%);
+	--color-normal-text: hsl(0, 0%, 100%);
+	--color-normal-text-dark: hsl(0, 0%, 100%);
+	--color-button-text: hsl(0, 0%, 100%);
+	--color-links: hsl(298, 70%, 77%);
+	--color-links-grey: hsla(0, 0%, 84%, 0.486);
+
+	/* Menus */
+	--color-dropdown-menu: hsl(30, 20%, 21%);
+}
+
+[data-theme="light"] {
+	/* Header/Footer Backgrounds */
+	--color-bg: hsl(30, 100%, 83%);
+	--color-bg-accent: hsla(30, 26%, 55%, 0.361);
+	--color-header-bg: hsl(15, 100%, 98%);
+	--color-footer-bg: hsl(60, 2%, 8%);
+
+	/* Buttons */
+	--color-button-bg        : hsl(25, 77%, 51%);
+	--color-button-bg-sec    : hsl(25, 66%, 61%);
+	--color-button-focus     : hsl(15, 40%, 40%);
+	--color-button-focus-sec : hsl(15, 40%, 40%);
+	--color-button-accent    : hsl(35, 90%, 60%);
+	--color-button-accent-sec: hsl(35, 84%, 64%);
+
+	/* Text */
+	--color-heading-text: hsl(0, 0%, 0%);
+	--color-normal-text: hsl(0, 0%, 0%);
+	--color-normal-text-dark: hsl(0, 0%, 100%);
+	--color-button-text: hsl(0, 0%, 100%);
+	--color-links: hsl(298, 70%, 77%);
+	--color-links-grey: hsla(0, 0%, 84%, 0.486);
+
+	/* Menus */
+	--color-dropdown-menu: hsl(29, 100%, 92%);
+}

@@ -1,58 +1,58 @@
 .boxStyle {
-  background-color: #1c441f;
-  box-shadow: 5px 5px 16px #00000005;
-  border-radius: 1rem;
-  margin: 1rem;
-  position: relative;
-  width: 15rem;
-  height: 20rem;
-  max-height: auto;
-  overflow: hidden;
+	background-color: #1c441f;
+	box-shadow: 5px 5px 16px #00000005;
+	border-radius: 1rem;
+	margin: 1rem;
+	position: relative;
+	width: 15rem;
+	height: 20rem;
+	max-height: auto;
+	overflow: hidden;
 }
 
 .coverContainerStyle {
-  width: 100%;
-  max-height: 40%;
-  overflow: hidden;
+	width: 100%;
+	max-height: 40%;
+	overflow: hidden;
 }
 .coverStyle {
-  width: 100%;
+	width: 100%;
 }
 
 .iconContainerStyle {
-  border-radius: 100%;
-  background-color: #1c441f;
-  padding: 0.25rem;
-  width: 4rem;
-  height: 4rem;
-  overflow: hidden;
+	border-radius: 100%;
+	background-color: #1c441f;
+	padding: 0.25rem;
+	width: 4rem;
+	height: 4rem;
+	overflow: hidden;
 }
 .iconStyle {
-  border-radius: 100%;
-  width: 100%;
-  height: 100%;
+	border-radius: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .titleContainerStyle {
-  position: absolute;
-  top: 30%;
-  display: flex;
-  padding: 0.25rem;
-  gap: 3%;
-  align-items: center;
+	position: absolute;
+	top: 30%;
+	display: flex;
+	padding: 0.25rem;
+	gap: 3%;
+	align-items: center;
 }
 .titleStyle {
-  color: #a6ffea;
-  font-size: 1.5rem;
+	color: #a6ffea;
+	font-size: 1.5rem;
 }
 
 .textContainerStyle {
-  position: absolute;
-  top: 50%;
-  max-width: 100%;
-  height: auto;
-  padding: 0.5rem;
+	position: absolute;
+	top: 50%;
+	max-width: 100%;
+	height: auto;
+	padding: 0.5rem;
 }
 .textStyle {
-  color: #ffffff;
+	color: #ffffff;
 }

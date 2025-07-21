@@ -1,7 +1,6 @@
-
 .BackToTop {
 	position: fixed;
-	right:  -1%;
+	right: -1%;
 	bottom: calc(2% + 3.5rem);
 
 	z-index: var(--z-index-overlay);
@@ -13,20 +12,24 @@
 }
 
 #Button {
-	background: linear-gradient(90deg, var(--color-button-bg), var(--color-button-accent));
+	background: linear-gradient(
+		90deg,
+		var(--color-button-bg),
+		var(--color-button-accent)
+	);
 	border-radius: 4rem;
-	border-top-right-radius   : 0%;
+	border-top-right-radius: 0%;
 	border-bottom-right-radius: 0%;
-	box-shadow: var(--box-shadow-buttons);
+	box-shadow: var(--box-shadow-light);
 
 	justify-content: left;
 	font-size: 1.5rem;
-	width : 7rem;
+	width: 7rem;
 	aspect-ratio: 2 / 1;
-    padding-left: 1rem;
+	padding-left: 1rem;
 
 	position: relative;
-	right:  -35%;
+	right: -35%;
 	@media (width <= 450px) {
 		transform: scale(0.8);
 		right: -4rem;
@@ -34,14 +37,14 @@
 }
 
 #Button:hover {
-    transform: translateX(-20%);
+	transform: translateX(-20%);
 	@media (width <= 450px) {
-        transform: translateX(-40%);
+		transform: translateX(-40%);
 	}
 }
 #Button:active {
-    transform: translateX(-15%);
+	transform: translateX(-15%);
 	@media (width <= 450px) {
-        transform: translateX(-35%);
+		transform: translateX(-35%);
 	}
 }

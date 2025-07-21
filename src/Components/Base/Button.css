@@ -1,26 +1,25 @@
-
 .button {
 	border-radius: 10px;
-	box-shadow: 4px 4px 4px #0000000f;
+	box-shadow: var(--box-shadow-light);
 
 	user-select: none;
 
 	margin: 0.25rem;
-	padding      : 0.5rem;
-	padding-left : 0.5rem;
+	padding: 0.5rem;
+	padding-left: 0.5rem;
 	padding-right: 0.5rem;
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
 
-	min-width : max-content;
+	min-width: max-content;
 	min-height: 1rem;
 
 	font-weight: 700;
-	color: #ffffff;
+	color: var(--color-button-text);
 
-	transition: 0.2s ease;
+	transition: var(--transition-fast);
 }
 
 .button:hover {
@@ -29,7 +28,6 @@
 }
 
 .button:active {
-	/* transition: 0.1s ease; */
 	transform: scale(0.95);
 }
 
@@ -64,20 +62,26 @@
 /*#region Variants */
 .Default {
 	/* background: linear-gradient(90deg, red, yellow, green); */
-	background-color: #2853a8;
-	border-color: #2853a8;
+	background-color: var(--color-button-bg);
 	border-width: 0px;
 }
 .Default:hover {
-	background-color: #3b8ed3;
+	background-color: var(--color-button-accent);
+}
+.Default:active {
+	background-color: var(--color-button-focus);
 }
 
 .Secondary {
-	background-color: #3f4c66;
-	border-color: #3f4c66;
+	background-color: var(--color-button-bg-sec);
+	border-width: 0px;
 }
 .Secondary:hover {
-	background-color: #3279b3;
+	background-color: var(--color-button-accent);
+}
+.Secondary:active {
+	background-color: var(--color-button-accent-sec);
+	border-width: 0px;
 }
 
 .Ghost {
@@ -86,7 +90,10 @@
 	border: none;
 }
 .Ghost:hover {
-	background-color: #3b8fd344;
+	background-color: var(--color-button-accent-sec);
+}
+.Ghost:active {
+	background-color: var(--color-button-focus-sec);
 }
 
 .Danger {
@@ -95,27 +102,18 @@
 .Danger:hover {
 	background-color: #ff0040;
 }
-
-.Outlined {
-	background-color: #3f4c66;
-	border-width: 2px;
-	border-color: #20242c;
-	@media (prefers-color-scheme: dark) {
-		border-color: #6e7c96;
-	}
-}
-.Outlined:hover {
-	background-color: #3279b35e;
+.Danger:active {
+	background-color: #ff0080;
 }
 /*#endregion */
 
 /*#region Misc */
 .spinner {
 	display: inline-block;
-	border       : 4px solid #cccccca4;
-	border-top   : 4px solid #3333331c;
+	border: 4px solid #cccccca4;
+	border-top: 4px solid #3333331c;
 	border-radius: 100%;
-	width : 1em;
+	width: 1em;
 	height: 1em;
 	animation: spin 1s linear infinite;
 }
@@ -134,3 +132,11 @@
 	align-items: center;
 }
 /*#endregion */
+
+[data-theme= "dark"] {
+	--color-button-text: #ffffff;
+}
+
+[data-theme= "light"] {
+	--color-button-text: #ffffff;
+}

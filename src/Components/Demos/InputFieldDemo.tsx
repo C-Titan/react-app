@@ -5,8 +5,8 @@ import {
 	PinField,
 	TextField,
 	TelField,
-} from "@/Components/InputField";
-import { Button } from "@/Components/Button";
+} from "@/Components/Base/InputField";
+import { Button } from "@/Components/Base/Button";
 
 export default function InputFieldDemo() {
 	const [pin, setPin] = useState("");
@@ -20,7 +20,7 @@ export default function InputFieldDemo() {
 	};
 
 	return (
-		<form onSubmit={handleSubmit} style={{margin: "5%"}}>
+		<form onSubmit={handleSubmit} style={{ margin: "5%" }}>
 			<PinField label="Pin" value={pin} onChange={setPin} />
 			<br />
 			<TelField label="Tel" value={tel} onChange={setTel} />

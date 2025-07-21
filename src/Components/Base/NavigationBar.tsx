@@ -1,26 +1,21 @@
-
 // import React, { useState } from "react";
-import "./NavigationMenu.css";
+import "./NavigationBar.css";
 //
 
-interface NavMenuProps {
+interface NavBarProps {
 	id?: string;
 	ariaLabel?: string;
 	ariaDescribedBy?: string;
 	children?: React.ReactNode;
 }
-export const NavMenu = ({
+export const NavBar = ({
 	id = undefined,
-	ariaLabel, 
-	ariaDescribedBy, 
-	children 
-}: NavMenuProps) => {
+	ariaLabel,
+	ariaDescribedBy,
+	children,
+}: NavBarProps) => {
 	return (
-		<List
-			id={id}
-			aria-label={ariaLabel}
-			aria-describedby={ariaDescribedBy}
-		>
+		<List id={id} aria-label={ariaLabel} aria-describedby={ariaDescribedBy}>
 			{children}
 		</List>
 	);
@@ -28,7 +23,7 @@ export const NavMenu = ({
 //
 
 interface ListProps {
-	id?: string
+	id?: string;
 	title?: string;
 	type?: "ul" | "ol";
 	children?: React.ReactNode;
@@ -42,7 +37,7 @@ const List = ({
 	ariaLabel,
 	ariaDescribedBy,
 }: ListProps) => {
-	const className = "NavMenuList";
+	const className = "NavBarList";
 	const ListTag = type === "ol" ? "ol" : "ul";
 
 	return (
@@ -74,14 +69,11 @@ const Item = ({
 	ariaDescribedBy = title,
 }: ItemProps) => {
 	return (
-		<li 
-			id={id}
-			aria-label={ariaLabel} 
-			aria-describedby={ariaDescribedBy}
-		>
+		<li id={id} aria-label={ariaLabel} aria-describedby={ariaDescribedBy}>
 			<button
 				id={`${id}-button`}
-				className="MenuListItem"				aria-label={`${ariaLabel}-button`}
+				className="MenuListItem"
+				aria-label={`${ariaLabel}-button`}
 				aria-describedby={`${ariaDescribedBy}-button`}
 			>
 				{title && <div>{title}</div>}
@@ -92,9 +84,9 @@ const Item = ({
 };
 
 type ItemLinkProps = Omit<ItemProps, "onnClick"> & {
-	href: string
+	href: string;
 	target?: "_blank" | "_self" | "_parent" | "_top";
-}
+};
 const ItemLink = ({
 	id = undefined,
 	title,
@@ -105,14 +97,10 @@ const ItemLink = ({
 	ariaDescribedBy = title,
 }: ItemLinkProps) => {
 	return (
-		<li 
-			id={id}
-			aria-label={ariaLabel} 
-			aria-describedby={ariaDescribedBy}
-			>
-			<a 
-				id={`${id}-link`} 
-				href={href} 
+		<li id={id} aria-label={ariaLabel} aria-describedby={ariaDescribedBy}>
+			<a
+				id={`${id}-link`}
+				href={href}
 				target={target}
 				className="MenuListItem"
 				aria-label={`${ariaLabel}-link`}
@@ -123,18 +111,16 @@ const ItemLink = ({
 			</a>
 		</li>
 	);
-}
-
-
-NavMenu.List     = List;
-NavMenu.Item     = Item;
-NavMenu.ItemLink = ItemLink;
-
-type CompoundNavMenu = React.FC<NavMenuProps> & {
-	List     : React.FC<ListProps>;
-	Item     : React.FC<ItemProps>;
-	ItemLink : React.FC<ItemLinkProps>;
 };
 
-export default NavMenu as CompoundNavMenu;
+NavBar.List = List;
+NavBar.Item = Item;
+NavBar.ItemLink = ItemLink;
 
+type CompoundNavBar = React.FC<NavBarProps> & {
+	List: React.FC<ListProps>;
+	Item: React.FC<ItemProps>;
+	ItemLink: React.FC<ItemLinkProps>;
+};
+
+export default NavBar as CompoundNavBar;

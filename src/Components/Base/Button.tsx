@@ -4,14 +4,14 @@ import React, { useId } from "react";
 interface ButtonProps {
 	id?: string;
 
-	variant?: "default" | "secondary" | "ghost" | "danger" | "outlined";
+	variant?: "default" | "secondary" | "ghost" | "danger";
 	type?: "button" | "submit" | "reset" | undefined;
 
 	href?: string;
 	loading?: true;
 	disabled?: true;
 
-	width?: string;
+	width? : string;
 	height?: string;
 	size?: "content" | "icon" | "mixed";
 	padding?: string;
@@ -57,15 +57,18 @@ export const Button: React.FC<ButtonProps> = ({
 		secondary: "Secondary",
 		ghost:     "Ghost",
 		danger:    "Danger",
-		outlined:  "Outlined",
 	};
 
 	const className =
 		`button ` +
-		`${variantStyle[variant]}` +
-		`${isDisabled ? " disabled" : ""}` +
-		`${loading && !isDisabled ? " loading" : ""}` +
-		`${size === "icon" ? " icon" : size === "mixed" ? " mixed" : ""}`;
+		`${variantStyle[variant]} ` +
+		`${isDisabled ? "disabled" : ""} ` +
+		`${loading && !isDisabled ? " loading" : ""} ` +
+		`${(size === "icon") ? 
+			"icon" : 
+			(size === "mixed") ? 
+				" mixed" : 
+				""}`;
 
 	if (style === undefined) {
 		style = {
@@ -106,9 +109,9 @@ export const Button: React.FC<ButtonProps> = ({
 			className={className}
 			type={type}
 			onClick={onClick}
-			disabled={disabled || loading}
+			disabled={ disabled || loading }
 			style={style}
-			aria-label = {ariaLabel || id}
+			aria-label = { ariaLabel || id }
 			aria-describedby = { ariaDescribedBy || id }
 		>
 			{content}

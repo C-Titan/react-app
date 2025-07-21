@@ -1,7 +1,7 @@
 import "./SignUpPage.css";
 import React, { useState } from "react";
-import { EmailField, PasswordField } from "@/Components/InputField";
-import { Button } from "@/Components/Button";
+import { EmailField, PasswordField } from "@/Components/Base/InputField";
+import { Button } from "@/Components/Base/Button";
 
 interface SignUpProps {
 	onSignup?: (email: string, password: string) => void; // Made required
@@ -22,17 +22,20 @@ const SignUp: React.FC<SignUpProps> = ({ onSignup }) => {
 			return;
 		}
 
-		function isPasswordSecure(pass:string): {bool: boolean, message: string} {
-			const isLengthValid = pass.length >= 8
-			const isspacialValid = /[!@$%^&*(){}\[\]\/]/.test(pass)
-			const isNumeralValid = /[0-9]/.test(pass)
+		function isPasswordSecure(pass: string): {
+			bool: boolean;
+			message: string;
+		} {
+			const isLengthValid = pass.length >= 8;
+			const isspacialValid = /[!@$%^&*(){}\[\]\/]/.test(pass);
+			const isNumeralValid = /[0-9]/.test(pass);
 			return {
-				bool : isLengthValid && (isNumeralValid || isspacialValid),
-				message : (
-					!isLengthValid ? "Password must be at least 8 characters long" :
-					!isNumeralValid || !isspacialValid ? "Password must contain a number or a special character" :
-					""
-				)
+				bool: isLengthValid && (isNumeralValid || isspacialValid),
+				message: !isLengthValid
+					? "Password must be at least 8 characters long"
+					: !isNumeralValid || !isspacialValid
+					? "Password must contain a number or a special character"
+					: "",
 			};
 		}
 		const doPasswordsMatch = (p1: string, p2: string) => p1 === p2;
@@ -44,7 +47,7 @@ const SignUp: React.FC<SignUpProps> = ({ onSignup }) => {
 
 		const passwordCheck = isPasswordSecure(password);
 		if (!passwordCheck.bool) {
-			setError( passwordCheck.message );
+			setError(passwordCheck.message);
 			return;
 		}
 
@@ -55,7 +58,9 @@ const SignUp: React.FC<SignUpProps> = ({ onSignup }) => {
 		<div className="SignUpPage">
 			<div className="Card">
 				<h2 className="HeaderText">Sign up with us</h2>
-				<p className="HeaderSubtext">Start your management journey here.</p>
+				<p className="HeaderSubtext">
+					Start your management journey here.
+				</p>
 				<form onSubmit={handleSubmit} className="Form">
 					<EmailField
 						label="email"
@@ -70,7 +75,7 @@ const SignUp: React.FC<SignUpProps> = ({ onSignup }) => {
 					/>
 
 					<PasswordField
-						label = "Confirm Pssword"
+						label="Confirm Pssword"
 						value={confirm}
 						onChange={setConfirm}
 					/>

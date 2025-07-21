@@ -1,6 +1,6 @@
 
 import "./MediaContainer.css";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useId } from "react";
 
 interface MediaProps {
 	id?: string;
@@ -11,10 +11,10 @@ interface MediaProps {
     
     width    ?: string;
     height   ?: string;
-    maxWidth ?: string;
-    maxHeight?: string;
     minWidth ?: string;
     minHeight?: string;
+    maxWidth ?: string;
+    maxHeight?: string;
     aspectRatio?: string;
     borderRadius?: string;
 	
@@ -26,6 +26,8 @@ interface MediaProps {
 
 	children?: React.ReactNode;
 }
+
+//#region Container
 export const MediaContainer = ({
 	id,
 	title,
@@ -47,11 +49,11 @@ export const MediaContainer = ({
 }: MediaProps) => {
 	return (
 		<figure
+			id={ id || useId() }
 			className={"Container" + " " + className}
-			id={id}
 			style={{
 				borderRadius,
-				width,
+				width: width,
 				height,
 				maxWidth,
 				maxHeight,
@@ -67,8 +69,9 @@ export const MediaContainer = ({
 		</figure>
 	);
 };
+//#endregion
 
-
+//#region Video
 type VideoProps = Omit<MediaProps, "href" | "children" | "alt"> & {
 	loop?: boolean;
 	muted?: boolean;
@@ -129,7 +132,9 @@ const Video: React.FC<VideoProps> = ({
 		</MediaContainer>
 	)
 }
+//#endregion
 
+//#region Image
 type ImageProps = MediaProps & {
 	alt: string;
 	target?: "_blank" | "_self" | "_parent" | "_top";
@@ -143,7 +148,7 @@ const Image: React.FC<ImageProps> = ({
 	target = "_blank",
 
     mediaSource,
-	placeholderSource,
+	placeholderSource = "https://thispersondoesnotexist.com/",
 
 	...props
 }) => {
@@ -162,7 +167,9 @@ const Image: React.FC<ImageProps> = ({
 		</MediaContainer>
 	);
 }
+//#endregion
 
+//#region IFrame
 type IframeProps = Omit<MediaProps, "href" | "children" | "alt"> & {
 	allow?: string
 	allowFullScreen?: boolean;
@@ -213,8 +220,9 @@ const Iframe: React.FC<IframeProps> =({
 		</MediaContainer>
 	);
 }
-//
+//#endregion
 
+//#Export
 MediaContainer.Video  = Video
 MediaContainer.Image  = Image
 MediaContainer.Iframe = Iframe
@@ -226,5 +234,5 @@ type CompoundMediaContainer = React.FC<MediaProps> & {
 }
 
 export default MediaContainer as CompoundMediaContainer;
-
+//#endregion
 
