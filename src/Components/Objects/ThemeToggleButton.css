@@ -10,8 +10,8 @@
 #Toggle {
 	background: linear-gradient(
 		90deg,
-		var(--color-button-bg),
-		var(--color-button-accent)
+		var(--color-accent),
+		var(--color-accent-lighter)
 	);
 	border-radius: 4rem;
 	border-top-right-radius: 0%;
@@ -28,6 +28,13 @@
 	@media (width <= 450px) {
 		transform: scale(0.8);
 		right: -3.5rem;
+	}
+	@media (prefers-color-scheme: dark) {
+		background: linear-gradient(
+			90deg,
+			var(--color-accent-dark),
+			var(--color-accent-lighter)
+		);
 	}
 }
 

@@ -1,0 +1,48 @@
+#Dashboard {
+	width : 100vw;
+	height: 100vh;
+	display: flex;
+	color: var(--color-text);
+}
+
+h1 {
+	font-size: var(--font-size-7);
+}
+
+ul {
+	list-style-type: none;
+	padding: 1rem;
+}
+
+/*#region Side Menu */
+#SideMenu {
+	background-color: var(--color-base);
+	padding: 1rem;
+	width : 20%;
+	height: 100vh;
+	min-width: 12rem;
+	color: var(--color-text-dark-bg);
+}
+
+	#SideMenuTitleContainerBox {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	#SideMenuTitleContainerBox > * {
+		margin      : 0.25rem;
+		margin-left : 0rem;
+		margin-right: 0rem;
+	}
+/*#endregion */
+
+/*#region Main */
+#Main {
+	background-color: var(--color-primary);
+	padding: 2rem;
+	width : 80%;
+	height: 100vh;
+	color: var(--color-text-light);
+}
+/*#endregion */

@@ -1,5 +1,5 @@
 import "./Header.css";
-import { NavBar } from "@/Components/Base/NavigationBar";
+import NavBar from "@/Components/Base/NavigationBar";
 import { MediaContainer } from "@/Components/Base/MediaContainer";
 import { useEffect } from "react";
 
@@ -26,24 +26,24 @@ export default function Header() {
 					aspectRatio="4/1"
 				/>
 
-				<NavBar>
+				<NavBar.List>
 					<NavBar.Item title="Products"></NavBar.Item>
-					<NavBar.ItemLink href="" target="_self">
+					<NavBar.Item href="" target="_self">
 						Recources
-					</NavBar.ItemLink>
-					<NavBar.ItemLink href="" target="_self">
+					</NavBar.Item>
+					<NavBar.Item href="" target="_self">
 						Pricing
-					</NavBar.ItemLink>
-				</NavBar>
+					</NavBar.Item>
+				</NavBar.List>
 
-				<NavBar>
-					<NavBar.ItemLink href="" target="_self">
+				<NavBar.List>
+					<NavBar.Item href="" target="_self">
 						Sign in
-					</NavBar.ItemLink>
-					<NavBar.ItemLink href="" target="_self">
+					</NavBar.Item>
+					<NavBar.Item href="" target="_self">
 						Get Started
-					</NavBar.ItemLink>
-				</NavBar>
+					</NavBar.Item>
+				</NavBar.List>
 			</nav>
 		</header>
 	);

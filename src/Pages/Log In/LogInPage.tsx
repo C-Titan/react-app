@@ -1,4 +1,4 @@
-import "./LogInPage.css";
+import "../Sign Up/SignUpPage.css";
 import React, { useState } from "react";
 import { EmailField, PasswordField } from "@/Components/Base/InputField";
 import { Button } from "@/Components/Base/Button";

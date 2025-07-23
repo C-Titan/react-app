@@ -20,10 +20,45 @@
 @media only screen and (min-width: 1000px) {
 }
 
+/*#region ========= CSS RESET ========= */
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+
+		transition: var(--transition-fast);
+	}
+	html {
+		font-size: var(--font-size-3);
+		height: auto;
+		max-width: 100vw;
+		overflow: hidden;
+		overflow-y: scroll;
+		scroll-behavior: smooth;
+	}
+
+	body {
+		background-color: var(--color-primary-muted);
+
+		padding: 0rem;
+		margin: 0rem;
+		
+		width : 100vw;
+		height: auto;
+		
+		font-family: var(--font-family);
+		color: var(--color-text);
+		line-height: 1.4;
+		
+		overflow-x: hidden;
+	}
+/*#endregion */
+
 #root {
 	width: 100vw;
 }
 
+/* prettier-ignore */
 :root {
 	/* Fonts */
 	--font-family: sans-serif;
@@ -36,6 +71,14 @@
 	--font-size-5: calc(var(--font-size) * 1.5);
 	--font-size-6: calc(var(--font-size) * 1.75);
 	--font-size-7: calc(var(--font-size) * 2);
+	--font-size-8: calc(var(--font-size) * 2.5);
+	--font-size-9: calc(var(--font-size) * 3);
+
+	--font-weight-skiny : 100;
+	--font-weight-thin  : 200;
+	--font-weight-def   : 400;
+	--font-weight-bold  : 600;
+	--font-weight-chunky: 900;
 
 	/* UI */
 	--border-radius-1: 0.5em;
@@ -66,114 +109,156 @@
 	--z-index-overlay: 1000;
 
 	/* VFX */
-	--box-shadow-heavy: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	--box-shadow-heavy: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+		0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	--box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
 	--box-shadow-light: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
 
 	/* ANIMATIONS */
-	--transition-slow: all 0.5s ease;
-	--transition-med : all 0.3s ease;
-	--transition-fast: all 0.2s ease;
+	--transition-sdark: all 0.5s ease;
+	--transition-med  : all 0.3s ease;
+	--transition-fast : all 0.2s ease;
+	
+	@media (prefers-color-scheme: dark) {
+		--font-weight: 18px;
+	}
 }
 
+/* prettier-ignore */
 :root {
-	--color-primary    : hsl(236, 71%, 85%);
-	--color-secondary  : hsl(235, 85%, 80%);
-	--color-primary-muted  : hsl(235, 80%, 70%);
-	--color-secondary-muted: hsl(235, 10%, 60%);
+	/* --hue-main    : 235;
+	--hue-accent-1: 200;
+	--hue-accent-2: 125;
+	--lightness: 100%;
+	--saturation: 100%; */
+	/* If I decided I want to modify the main hue of the whole page, 
+	I'd need to plug in these guys into the hue of every color val in this list.
+	Same as lightness and saturation.*/
 
-	--color-accent-highlight: hsl(205, 50%, 50%);
-	--color-accent-mid-high : hsl(220, 50%, 50%);
-	--color-accent          : hsl(235, 50%, 50%);
-	--color-accent-mid-low  : hsl(250, 50%, 25%);
-	--color-accent-shade    : hsl(265, 50%, 25%);
-	--color-accent-secondary-highlight: hsl(90, 50%, 50%);
-	--color-accent-secondary-mid-high : hsl(105, 50%, 50%);
-	--color-accent-secondary          : hsl(125, 50%, 50%);
-	--color-accent-secondary-mid-low  : hsl(140, 50%, 25%);
-	--color-accent-secondary-shade    : hsl(165, 50%, 25%);
+	--color-base     : hsl(235, 50%, 20%);
+	/* --color-base-dark: hsl(265, 49%, 10%); */
+	--color-primary  : hsl(235, 80%, 85%);
+	--color-secondary: hsl(235, 30%, 90%);
+	--color-contrast : hsl(235, 15%, 20%);
+	--color-base-muted     : hsl(235, 25%, 20%);
+	--color-primary-muted  : hsl(235, 40%, 85%);
+	--color-secondary-muted: hsl(235, 15% , 90%);
+	--color-contrast-muted : hsl(235, 7.5%, 10%);
 
-	--color-text-def: hsl(240, 100%, 10%);
-	--color-text-h1: hsl(225, 60%, 35%);
+	/* --color-unused-lighter: hsl(150, 40%, 37.5%);
+	--color-unused-light   : hsl(175, 40%, 30%);
+	--color-unused         : hsl(200, 40%, 25%);
+	--color-unused-dark    : hsl(225, 40%, 20%);
+	--color-unused-darker : hsl(250, 40%, 12.5%); */
+	/* leaving these here cuz I like the colors */
+
+	--color-neutral-dark : hsl(0, 0%, 25%);
+	--color-neutral      : hsl(0, 0%, 50%);
+	--color-neutral-light: hsl(0, 0%, 75%);
+
+	--color-accent-lighter: hsl(170, 50%, 75%);
+	--color-accent-light  : hsl(185, 50%, 50%);
+	--color-accent        : hsl(200, 50%, 50%);
+	--color-accent-dark   : hsl(215, 50%, 25%);
+	--color-accent-darker : hsl(230, 50%, 15%);
+	--color-accent-secondary-lighter: hsl( 90, 50%, 75%);
+	--color-accent-secondary-light  : hsl(105, 50%, 50%);
+	--color-accent-secondary        : hsl(125, 50%, 50%);
+	--color-accent-secondary-dark   : hsl(140, 50%, 25%);
+	--color-accent-secondary-darker : hsl(165, 50%, 15%);
+
+	--color-accent-muted-lighter: hsl(170, 20%, 75%);
+	--color-accent-muted-light  : hsl(185, 20%, 50%);
+	--color-accent-muted        : hsl(200, 20%, 50%);
+	--color-accent-muted-dark   : hsl(215, 20%, 25%);
+	--color-accent-muted-darker : hsl(230, 20%, 15%);
+	--color-accent-muted-secondary-lighter: hsl( 90, 20%, 75%);
+	--color-accent-muted-secondary-light  : hsl(105, 20%, 50%);
+	--color-accent-muted-secondary        : hsl(125, 20%, 50%);
+	--color-accent-muted-secondary-dark   : hsl(140, 20%, 25%);
+	--color-accent-muted-secondary-darker : hsl(165, 20%, 15%);
+
+	--color-text          : hsl(240, 50%, 10%);
+	--color-text-inverse  : hsl(240, 50%, 90%);
+	--color-text-muted        : hsl(240, 25%, 20%);
+	--color-text-muted-inverse: hsl(240, 25%, 80%);
+	
+	--color-text-light-bg : hsl(240, 50%, 10%);
+	--color-text-dark-bg  : hsl(240, 50%, 90%);
+	--color-text-highlight: hsl(209, 50%, 50%);
+	
+	--color-text-h1: hsl(225, 60%, 65%);
 	--color-text-h2: hsl(260, 60%, 35%);
 	--color-text-h3: hsl(285, 60%, 35%);
+
 	--color-text-link: hsl(225, 50%, 40%);
 	--color-text-link-highlight: hsl(209, 54%, 52%);
 	--color-text-error: hsl(10, 100%, 50%);
 	--color-text-warning: hsl(40, 100%, 50%);
 
+	--color-shadow-light: hsla(230, 80%, 5%, 0.2);
+	--color-shadow      : hsla(230, 80%, 5%, 0.5);
+	--color-shadow-heavy: hsla(230, 80%, 5%, 0.8);
+
+	--color-glow-light: hsla(230, 80%, 95%, 0.2);
+	--color-glow      : hsla(230, 80%, 95%, 0.5);
+	--color-glow-heavy: hsla(230, 80%, 95%, 0.8);
+
+	--color-red    : hsl(  0, 80%, 50%);
+	--color-orange : hsl( 30, 80%, 50%);
+	--color-yellow : hsl( 60, 80%, 50%);
+	--color-lime   : hsl( 90, 80%, 50%);
+	--color-green  : hsl(120, 80%, 50%);
+	--color-teal   : hsl(150, 80%, 50%);
+	--color-cyan   : hsl(180, 80%, 50%);
+	--color-blue   : hsl(210, 80%, 50%);
+	--color-indego : hsl(240, 80%, 50%);
+	--color-purple : hsl(270, 80%, 50%);
+	--color-violet : hsl(300, 80%, 50%);
+	--color-magenta: hsl(330, 80%, 50%);
+
 	@media (prefers-color-scheme: dark) {
-		--color-primary  : hsl(235, 30%, 15%);
-		--color-secondary: hsl(235, 15%, 20%);
-		--color-primary-muted  : hsl(235, 20%, 30%);
-		--color-secondary-muted: hsl(235, 10%, 40%);
-		
-		--color-accent-highlight: hsl(205, 50%, 65%);
-		--color-accent-mid-high : hsl(220, 50%, 65%);
-		--color-accent          : hsl(235, 50%, 65%);
-		--color-accent-mid-low  : hsl(250, 50%, 40%);
-		--color-accent-shade    : hsl(265, 50%, 40%);
-		--color-accent-secondary-highlight: hsl(90, 50%, 65%);
-		--color-accent-secondary-mid-high : hsl(105, 50%, 65%);
-		--color-accent-secondary          : hsl(125, 50%, 65%);
-		--color-accent-secondary-mid-low  : hsl(140, 50%, 40%);
-		--color-accent-secondary-shade    : hsl(165, 50%, 40%);
+		--color-primary  : hsl(235, 30%, 10%);
+		--color-secondary: hsl(235, 20%, 15%);
+		--color-contrast : hsl(235, 15%, 90%);
+		--color-primary-muted  : hsl(235, 15%, 10%);
+		--color-secondary-muted: hsl(235, 10% , 15%);
+		--color-contrast-muted : hsl(235, 7.5%, 90%);
 
-		--color-text-def: hsl(240, 100%, 90%);
+		/* --color-unused-lighter: hsl(150, 40%, 62.5%);
+		--color-unused-light   : hsl(175, 40%, 70%);
+		--color-unused         : hsl(200, 40%, 75%);
+		--color-unused-dark    : hsl(225, 40%, 80%);
+		--color-unused-darker : hsl(250, 40%, 87.5%); */
+
+		--color-accent-lighter: hsl(170, 50%, 60%);
+		--color-accent-light  : hsl(185, 50%, 65%);
+		--color-accent        : hsl(200, 50%, 55%);
+		--color-accent-dark   : hsl(215, 50%, 40%);
+		--color-accent-darker : hsl(230, 50%, 40%);
+		--color-accent-secondary-lighter: hsl( 90, 50%, 60%);
+		--color-accent-secondary-light  : hsl(105, 50%, 65%);
+		--color-accent-secondary        : hsl(125, 50%, 55%);
+		--color-accent-secondary-dark   : hsl(140, 50%, 40%);
+		--color-accent-secondary-darker : hsl(165, 50%, 40%);
+
+		--color-accent-muted-lighter: hsl(170, 20%, 60%);
+		--color-accent-muted-light  : hsl(185, 20%, 65%);
+		--color-accent-muted        : hsl(200, 20%, 55%);
+		--color-accent-muted-dark   : hsl(215, 20%, 40%);
+		--color-accent-muted-darker : hsl(230, 20%, 40%);
+		--color-accent-muted-secondary-lighter: hsl( 90, 20%, 60%);
+		--color-accent-muted-secondary-light  : hsl(105, 20%, 65%);
+		--color-accent-muted-secondary        : hsl(125, 20%, 55%);
+		--color-accent-muted-secondary-dark   : hsl(140, 20%, 40%);
+		--color-accent-muted-secondary-darker : hsl(165, 20%, 40%);
+
+		--color-text          : hsl(240, 100%, 90%);
+		--color-text-inverse  : hsl(240, 100%, 10%);
+		--color-text-special  : hsl(125, 100%, 90%);
+		--color-text-highlight: hsl(209, 100%, 50%);
+		/* --color-text-h1: hsl(225, 60%, 65%); */
+		--color-text-h2: hsl(260, 60%, 65%);
+		--color-text-h3: hsl(285, 60%, 65%);
 	}
-}
-
-/* ========= Themes ========= */
-[data-theme="dark"] {
-	/* Header/Footer Backgrounds */
-	--color-bg: hsl(30, 20%, 20%);
-	--color-bg-accent: hsla(30, 25%, 39%, 0.361);
-	--color-header-bg: hsl(15, 14%, 11%);
-	--color-footer-bg: hsl(60, 2%, 8%);
-	
-	/* Buttons */
-	--color-button-bg        : hsl(25, 77%, 51%);
-	--color-button-bg-sec    : hsl(25, 66%, 61%);
-	--color-button-focus     : hsl(15, 40%, 40%);
-	--color-button-focus-sec : hsl(15, 40%, 40%);
-	--color-button-accent    : hsl(35, 90%, 60%);
-	--color-button-accent-sec: hsl(35, 84%, 64%);
-
-	/* Text */
-	--color-heading-text: hsl(0, 0%, 100%);
-	--color-normal-text: hsl(0, 0%, 100%);
-	--color-normal-text-dark: hsl(0, 0%, 100%);
-	--color-button-text: hsl(0, 0%, 100%);
-	--color-links: hsl(298, 70%, 77%);
-	--color-links-grey: hsla(0, 0%, 84%, 0.486);
-
-	/* Menus */
-	--color-dropdown-menu: hsl(30, 20%, 21%);
-}
-
-[data-theme="light"] {
-	/* Header/Footer Backgrounds */
-	--color-bg: hsl(30, 100%, 83%);
-	--color-bg-accent: hsla(30, 26%, 55%, 0.361);
-	--color-header-bg: hsl(15, 100%, 98%);
-	--color-footer-bg: hsl(60, 2%, 8%);
-
-	/* Buttons */
-	--color-button-bg        : hsl(25, 77%, 51%);
-	--color-button-bg-sec    : hsl(25, 66%, 61%);
-	--color-button-focus     : hsl(15, 40%, 40%);
-	--color-button-focus-sec : hsl(15, 40%, 40%);
-	--color-button-accent    : hsl(35, 90%, 60%);
-	--color-button-accent-sec: hsl(35, 84%, 64%);
-
-	/* Text */
-	--color-heading-text: hsl(0, 0%, 0%);
-	--color-normal-text: hsl(0, 0%, 0%);
-	--color-normal-text-dark: hsl(0, 0%, 100%);
-	--color-button-text: hsl(0, 0%, 100%);
-	--color-links: hsl(298, 70%, 77%);
-	--color-links-grey: hsla(0, 0%, 84%, 0.486);
-
-	/* Menus */
-	--color-dropdown-menu: hsl(29, 100%, 92%);
 }

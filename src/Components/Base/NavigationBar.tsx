@@ -1,25 +1,5 @@
-// import React, { useState } from "react";
+import { useId } from "react";
 import "./NavigationBar.css";
-//
-
-interface NavBarProps {
-	id?: string;
-	ariaLabel?: string;
-	ariaDescribedBy?: string;
-	children?: React.ReactNode;
-}
-export const NavBar = ({
-	id = undefined,
-	ariaLabel,
-	ariaDescribedBy,
-	children,
-}: NavBarProps) => {
-	return (
-		<List id={id} aria-label={ariaLabel} aria-describedby={ariaDescribedBy}>
-			{children}
-		</List>
-	);
-};
 //
 
 interface ListProps {
@@ -29,6 +9,7 @@ interface ListProps {
 	children?: React.ReactNode;
 	ariaLabel?: string;
 	ariaDescribedBy?: string;
+	style?: React.CSSProperties;
 }
 const List = ({
 	id = undefined,
@@ -36,6 +17,7 @@ const List = ({
 	children,
 	ariaLabel,
 	ariaDescribedBy,
+	style,
 }: ListProps) => {
 	const className = "NavBarList";
 	const ListTag = type === "ol" ? "ol" : "ul";
@@ -46,6 +28,7 @@ const List = ({
 			aria-label={ariaLabel}
 			aria-describedby={ariaDescribedBy}
 			className={className}
+			style={style || {}}
 		>
 			{children}
 		</ListTag>
@@ -56,71 +39,73 @@ const List = ({
 interface ItemProps {
 	id?: string;
 	title?: string;
+	className?: string;
+
+	href?: string;
+	target?: "_blank" | "_self" | "_parent" | "_top";
+
 	children?: React.ReactNode;
+
 	ariaLabel?: string;
 	ariaDescribedBy?: string;
+
 	onClick?: () => void;
 }
 const Item = ({
-	id = undefined,
+	id,
 	title = "",
+	className = "",
+
+	href,
+	target,
+
 	children,
+
 	ariaLabel = title,
-	ariaDescribedBy = title,
+
+	onClick,
 }: ItemProps) => {
+	const ID = id ||  useId();
+	const content = href ? (
+		<a
+			id={`${ID}-link`}
+			href={href}
+			target={target}
+			role="button"
+			className={`${className ?? ""} MenuListItem`}
+			onClick={onClick}
+			aria-label={`${ariaLabel}-link`}
+		>
+			{title && <div>{title}</div>}
+			{children}
+		</a>
+	) : (
+		<button
+			id={`${ID}-button`}
+			className={`${className ?? ""} MenuListItem`}
+			onClick={onClick}
+			aria-label={`${ariaLabel}-button`}
+		>
+			{title && <div>{title}</div>}
+			{children}
+		</button>
+	);
+
 	return (
-		<li id={id} aria-label={ariaLabel} aria-describedby={ariaDescribedBy}>
-			<button
-				id={`${id}-button`}
-				className="MenuListItem"
-				aria-label={`${ariaLabel}-button`}
-				aria-describedby={`${ariaDescribedBy}-button`}
-			>
-				{title && <div>{title}</div>}
-				{children}
-			</button>
+		<li id={ID} aria-label={ariaLabel}>
+			{content}
 		</li>
 	);
 };
 
-type ItemLinkProps = Omit<ItemProps, "onnClick"> & {
-	href: string;
-	target?: "_blank" | "_self" | "_parent" | "_top";
-};
-const ItemLink = ({
-	id = undefined,
-	title,
-	href = "",
-	target = "_blank",
-	children,
-	ariaLabel = title,
-	ariaDescribedBy = title,
-}: ItemLinkProps) => {
-	return (
-		<li id={id} aria-label={ariaLabel} aria-describedby={ariaDescribedBy}>
-			<a
-				id={`${id}-link`}
-				href={href}
-				target={target}
-				className="MenuListItem"
-				aria-label={`${ariaLabel}-link`}
-				aria-describedby={`${ariaDescribedBy}-link`}
-			>
-				{title && <div>{title}</div>}
-				{children}
-			</a>
-		</li>
-	);
-};
 
-NavBar.List = List;
-NavBar.Item = Item;
-NavBar.ItemLink = ItemLink;
-
-type CompoundNavBar = React.FC<NavBarProps> & {
+type CompoundNavBar = {
 	List: React.FC<ListProps>;
 	Item: React.FC<ItemProps>;
-	ItemLink: React.FC<ItemLinkProps>;
 };
+
+const NavBar = {} as CompoundNavBar;
+NavBar.List = List;
+NavBar.Item = Item;
 
 export default NavBar as CompoundNavBar;

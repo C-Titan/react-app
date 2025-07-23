@@ -16,8 +16,8 @@
 	min-width: max-content;
 	min-height: 1rem;
 
-	font-weight: 700;
-	color: var(--color-button-text);
+	font-weight: var(--font-weight-bold);
+	color: var(--color-text-dark-bg);
 
 	transition: var(--transition-fast);
 }
@@ -29,6 +29,10 @@
 
 .button:active {
 	transform: scale(0.95);
+}
+
+a, a:hover, a:focus {
+	color: var(--color-text-dark-bg);
 }
 
 /*#region States */
@@ -62,25 +66,25 @@
 /*#region Variants */
 .Default {
 	/* background: linear-gradient(90deg, red, yellow, green); */
-	background-color: var(--color-button-bg);
+	background-color: var(--color-accent);
 	border-width: 0px;
 }
 .Default:hover {
-	background-color: var(--color-button-accent);
+	background-color: var(--color-accent-light);
 }
 .Default:active {
-	background-color: var(--color-button-focus);
+	background-color: var(--color-accent-dark);
 }
 
 .Secondary {
-	background-color: var(--color-button-bg-sec);
+	background-color: var(--color-accent-muted);
 	border-width: 0px;
 }
 .Secondary:hover {
-	background-color: var(--color-button-accent);
+	background-color: var(--color-accent-muted-light);
 }
 .Secondary:active {
-	background-color: var(--color-button-accent-sec);
+	background-color: var(--color-accent-muted-dark);
 	border-width: 0px;
 }
 
@@ -90,10 +94,10 @@
 	border: none;
 }
 .Ghost:hover {
-	background-color: var(--color-button-accent-sec);
+	background-color: var(--color-accent-light);
 }
 .Ghost:active {
-	background-color: var(--color-button-focus-sec);
+	background-color: var(--color-accent-dark);
 }
 
 .Danger {
@@ -132,11 +136,3 @@
 	align-items: center;
 }
 /*#endregion */
-
-[data-theme= "dark"] {
-	--color-button-text: #ffffff;
-}
-
-[data-theme= "light"] {
-	--color-button-text: #ffffff;
-}

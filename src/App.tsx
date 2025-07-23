@@ -2,21 +2,26 @@
 import "./GlobalVariables.css";
 // import './index.css';
 
-import HomePage from "./Pages/Home/HomePage";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import LandingPage from "./Pages/Landing/LandingPage";
 // import Login from "./Pages/Log In/LogInPage";
 // import SignUp from "./Pages/Sign Up/SignUpPage";
 
-// import { ThemeToggleButton } from "./Components/Objects/ThemeToggleButton";
+import { ThemeToggleButton } from "./Components/Objects/ThemeToggleButton";
 // import Header from "./Pages/Parts/Header/Header";
+
+// import AccordionDemo from "./Components/Demos/AccordionDemo";
 //
 
 
 function App() {
 	return (
 		<>
-			{/* <ThemeToggleButton/> */}
+			{/* <AccordionDemo/> */}
 			{/* <Header/> */}
-			<HomePage/>
+			{/* <ThemeToggleButton/> */}
+			{/* <Dashboard/> */}
+			<LandingPage/>
 			{/* <SignUp/> */}
 		 	{/* <Login/> */}
 		</>

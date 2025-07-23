@@ -95,7 +95,7 @@ const Video: React.FC<VideoProps> = ({
 	isPlaying = false,
 
     mediaSource,
-	placeholderSource,
+	placeholderSource ="https://www.w3schools.com/html/mov_bbb.mp4",
 	
 	...props
 }) => {

@@ -6,10 +6,10 @@ interface TopBannerProps {
 	children: React.ReactNode;
 }
 export const TopBanner: React.FC<TopBannerProps> = ({ children }) => {
-	// const [show, setShow] = useState(true);
-	const [show, setShow] = useState(
-		localStorage.getItem("showTopBanner") === "true"
-	);
+	const [show, setShow] = useState(true);
+	// const [show, setShow] = useState(
+	// 	localStorage.getItem("showTopBanner") === "true"
+	// );
 
 	useEffect(() => {
 		localStorage.setItem("showTopBanner", show.toString());

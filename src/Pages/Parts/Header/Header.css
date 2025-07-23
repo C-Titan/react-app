@@ -5,7 +5,7 @@ nav {
 }
 
 .headerClass {
-	background: var(--color-header-bg);
+	background: var(--color-primary);
 
 	margin: 0rem;
 	padding: var(--edge-gap-4);
@@ -27,7 +27,7 @@ nav {
 }
 
 .navButton {
-	background-color: var(--color-button-bg);
+	background-color: var(--color-accent);
 	display: flex;
 }
 

@@ -1,4 +1,4 @@
-import "./HomePage.css";
+import "./LandingPage.css";
 
 import AllOverlay from "../Parts/Overlay/Overlay";
 import Header from "../Parts/Header/Header";
@@ -181,7 +181,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ children }) => {
 	);
 };
 
-export default function HomePage() {
+export default function LandingPage() {
 	return (
 		<>
 			<AllOverlay />
@@ -217,6 +217,7 @@ export default function HomePage() {
 						<MediaContainer.Iframe
 							className="showcase-video"
 							title="Promo Video"
+							// mediaSource="../index.html"
 							mediaSource="https://www.youtube.com/embed/dQw4w9WgXcQ"
 							width="80%"
 							aspectRatio="5/3"

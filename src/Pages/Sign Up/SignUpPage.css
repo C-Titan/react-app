@@ -3,25 +3,20 @@
 	transition: all 0.3s ease;
 }
 
-.SignUpPage {
+.SignUpPage, .LoginPage {
 	min-height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 
-	background-color: #f7fafc;
-	color: #111;
-
-	@media (prefers-color-scheme: dark) {
-		background-color: #1a202c;
-		color: #f7fafc;
-	}
+	background-color: var(--color-primary);
+	color: var(--color-text);
 }
 
 .Card {
-	background-color: #83a2e2;
+	background-color: var(--color-secondary);
 	border-radius: 1rem;
-	box-shadow: 10px 10px 10px #0000000f;
+	box-shadow: 0px 0px 20px var(--color-shadow-heavy);
 
 	width: 30rem;
 	max-width: 70%;
@@ -33,17 +28,12 @@
 	align-content: center;
 	justify-content: center;
 
-	color: #111;
+	color: var(--color-text);
 
 	@media (width < 600px) {
 		min-width: 90%;
 		padding: 10% 15% 5%;
 		margin: 5%;
-	}
-
-	@media (prefers-color-scheme: dark) {
-		background-color: #202e49;
-		color: #f7fafc;
 	}
 }
 
@@ -51,21 +41,13 @@
 	font-weight: 600;
 	font-size: 2rem;
 	text-align: center;
-	color: #202e49;
-
-	@media (prefers-color-scheme: dark) {
-		color: #83a2e2;
-	}
+	color: var(--color-text-h1);
 }
 
 .HeaderSubtext {
 	margin-bottom: 3rem;
 	text-align: center;
-	color: #3e475e;
-
-	@media (prefers-color-scheme: dark) {
-		color: #a2aec7;
-	}
+	color: var(--color-text);
 }
 
 .Form {
@@ -73,7 +55,7 @@
 	flex-direction: column;
 	margin-bottom: 0.5rem;
 	gap: 1rem;
-	color: #111;
+	color: var(--color-text);
 }
 
 .errorMessage {
