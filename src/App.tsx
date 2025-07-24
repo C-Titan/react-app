@@ -3,7 +3,7 @@ import "./GlobalVariables.css";
 // import './index.css';
 
 import Dashboard from "./Pages/Dashboard/Dashboard";
-import LandingPage from "./Pages/Landing/LandingPage";
+// import LandingPage from "./Pages/Landing/LandingPage";
 // import Login from "./Pages/Log In/LogInPage";
 // import SignUp from "./Pages/Sign Up/SignUpPage";
 
@@ -19,9 +19,9 @@ function App() {
 		<>
 			{/* <AccordionDemo/> */}
 			{/* <Header/> */}
-			{/* <ThemeToggleButton/> */}
-			{/* <Dashboard/> */}
-			<LandingPage/>
+			<ThemeToggleButton/>
+			<Dashboard/>
+			{/* <LandingPage/> */}
 			{/* <SignUp/> */}
 		 	{/* <Login/> */}
 		</>

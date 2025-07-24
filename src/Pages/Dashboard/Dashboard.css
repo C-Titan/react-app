@@ -1,8 +1,28 @@
 #Dashboard {
 	width : 100vw;
 	height: 100vh;
-	display: flex;
+	display: grid;
+	
 	color: var(--color-text);
+	
+	grid-template-columns: var(--sidebar-width, 16rem) 1fr;
+	transition: grid-template-columns 0.3s ease;
+}
+#Dashboard {
+	--sidebar-width: 25%;
+	@media (width <= 750px) {
+		--sidebar-width: 10%;
+		--sidebar-width: 0%;
+	}
+}
+/*
+TODO:
+	Sidebar name and email should be hidden from sidebar when the screen size is beloe 750px. Profile pic, also should be shrunken, hidden and/or stylaized for fun
+ */
+#Dashboard.sideBarClosed {
+	grid-template-columns: 0 1fr;
+	--sidebar-width: 10%;
+	--sidebar-width: 0%;
 }
 
 h1 {
@@ -14,35 +34,164 @@ ul {
 	padding: 1rem;
 }
 
-/*#region Side Menu */
-#SideMenu {
-	background-color: var(--color-base);
+/*#region ===== Overlay ===== */
+.MenuToggle {
+	top: 2.5%;
+	width: fit-content;
+	aspect-ratio: 1;
+	position: fixed;
+	left: calc(var(--sidebar-width) - 1.5rem);
+	z-index: 1000;
+}
+.MenuToggle Button {
+	font-size: var(--font-size-5);
+	padding: 0.75rem;
+	border-radius: 100%;
+}
+/*#endregion*/
+
+
+/*#region ===== Side Menu ===== */
+#SideBar {
+	background: var(--color-base);
 	padding: 1rem;
-	width : 20%;
-	height: 100vh;
-	min-width: 12rem;
 	color: var(--color-text-dark-bg);
 }
 
-	#SideMenuTitleContainerBox {
+	#SideBarTitleContainerBox {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 	}
-	#SideMenuTitleContainerBox > * {
+	#SideBarTitleContainerBox > * {
 		margin      : 0.25rem;
 		margin-left : 0rem;
 		margin-right: 0rem;
 	}
+
+.SideBarItem {
+	display: flex;
+	gap: 0.2rem;
+}
 /*#endregion */
 
-/*#region Main */
+/*#region ===== Main ===== */
 #Main {
 	background-color: var(--color-primary);
 	padding: 2rem;
-	width : 80%;
+	width : 100%;
 	height: 100vh;
 	color: var(--color-text-light);
+}
+	#MenuBar {
+		/* TODO: Use grid here */
+		display: flex;
+		justify-content: space-between;
+	}
+		#FolderLocation {
+			font-size: var(--font-size-2);
+			color: var(--color-text-muted);
+		}
+		#NavBar ul {
+			display: flex;
+			gap: 4%;
+			font-size: var(--font-size-2);
+			color: var(--color-text-muted);
+			padding: 0;
+		}
+	
+	#Board {
+		height: 100%;
+		overflow: hidden;
+	}
+		#HeaderSection {
+			position: relative;
+			left: 2%;
+		}
+
+		#TaskLists {
+			display: flex;
+		}
+/*#endregion */
+
+
+/*#region ===== Objects ===== */
+.ListObject {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	margin: 0.5rem;
+
+	max-width: 25%;
+}
+	.ListObject h4 {
+		color: var(--color-neutral);
+		font-weight: var(--font-weight-skinny);
+	}
+
+.Card {
+	background-color: var(--color-secondary);
+	padding: 0.25rem;
+	margin: 0;
+	margin-bottom: 1rem;
+}
+	.CardTitleBox {
+		display: flex;
+		/* TODO: Items should be touching the edges */
+	}
+		.CardTitle {
+			color: var(--color-neutral);
+			font-weight: var(--font-weight-bold);
+		}
+		.CardMenuButton {
+			/* TODO: Modify Settings in Button components to be more flexible to customs */
+			background: none;
+		}
+
+.Notifications {
+	display: flex;
+}
+	.MessagesNote, .ClipNote {
+		display: flex;
+	}
+	.MessagesNote img, .ClipNote img {
+		width: 2rem;
+		aspect-ratio: 1;
+	}
+	.MessagesNote p, .ClipNote p {
+		font-size: var(--font-size-2);
+	}
+
+.StepInsert {
+	display: flex;
+}
+	.StepInsertImg {
+		border-radius: 100%;
+		width: 1rem;
+		aspect-ratio: 1;
+	}
+	.StepInsertTitle {
+		font-size: var(--font-size-2);
+		color: var(--color-text-dark-bg);
+	}
+	.StepInsertCheck {
+		border-radius: 100%;
+		width: 0.5rem;
+		aspect-ratio: 1;
+	}
+	.StepInsertDetails {
+		font-size: var(--font-size-2);
+		color: var(--color-text-dark-bg);
+	}
+
+.GalleryObject {
+	display: flex;
+	overflow-x: scroll;
+}
+.GalleryObject img {
+	width: 2.5rem;
+	aspect-ratio: 1;
 }
 /*#endregion */

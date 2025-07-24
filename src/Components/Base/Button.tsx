@@ -3,6 +3,7 @@ import React, { useId } from "react";
 
 interface ButtonProps {
 	id?: string;
+	className?: string;
 
 	variant?: "default" | "secondary" | "ghost" | "danger";
 	type?: "button" | "submit" | "reset" | undefined;
@@ -28,6 +29,7 @@ interface ButtonProps {
 
 export const Button: React.FC<ButtonProps> = ({
 	id,
+	className,
 
 	variant = "default",
 	type = "button",
@@ -59,8 +61,9 @@ export const Button: React.FC<ButtonProps> = ({
 		danger:    "Danger",
 	};
 
-	const className =
-		`button ` +
+	const _className =
+		className + 
+		` button ` +
 		`${variantStyle[variant]} ` +
 		`${isDisabled ? "disabled" : ""} ` +
 		`${loading && !isDisabled ? " loading" : ""} ` +
@@ -92,7 +95,7 @@ export const Button: React.FC<ButtonProps> = ({
 			<a 
 				id={id}
 				href={href}
-				className={className}
+				className={_className}
 				type={type}
 				onClick={onClick}
 				style={style}
@@ -106,7 +109,7 @@ export const Button: React.FC<ButtonProps> = ({
 	return (
 		<button
 			id={id}
-			className={className}
+			className={_className}
 			type={type}
 			onClick={onClick}
 			disabled={ disabled || loading }
