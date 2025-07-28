@@ -2,8 +2,8 @@ import { Button } from "../Base/Button";
 
 export default function ButtonDemo() {
 	const style: React.CSSProperties = {
-		display: "flex",
-		flexDirection: "column",
+		// display: "flex",
+		// flexDirection: "column",
 		maxWidth: "400px",
 	};
 

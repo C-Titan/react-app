@@ -1,4 +1,5 @@
 import React, { useId, useState } from "react";
+import { BiLockOpenAlt, BiLockAlt } from "react-icons/bi";
 import "./inputField.css";
 
 
@@ -89,7 +90,8 @@ const Field: React.FC<FieldProps> = ({
 						type = "button"
 						onClick = {() => setShow(prev => !prev)}
 					>
-						{show ? '👁️' : '🙈'}
+						{show ? <BiLockOpenAlt/> : <BiLockAlt/>}
+						{/* {show ? '👁️' : '🙈'} */}
 					</button>
 				)}
 			</div>

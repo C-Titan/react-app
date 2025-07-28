@@ -15,12 +15,12 @@
 	background: linear-gradient(
 		90deg,
 		var(--color-accent),
-		var(--color-accent-lighter)
+		var(--color-accent-brighter)
 	);
 	border-radius: 4rem;
 	border-top-right-radius: 0%;
 	border-bottom-right-radius: 0%;
-	box-shadow: var(--box-shadow-light);
+	box-shadow: var(--box-shadow-bright);
 
 	justify-content: left;
 	font-size: 1.5rem;
@@ -34,13 +34,13 @@
 		transform: scale(0.8);
 		right: -4rem;
 	}
-	@media (prefers-color-scheme: dark) {
+	/* @media (prefers-color-scheme: dark) {
 		background: linear-gradient(
 			90deg,
-			var(--color-accent-dark),
-			var(--color-accent-lighter)
+			var(--color-accent-dim),
+			var(--color-accent-brighter)
 		);
-	}
+	} */
 }
 
 #Button:hover {

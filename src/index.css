@@ -1,12 +1,11 @@
-/* @import "tailwindcss"; */
 
 :root {
 	background-color: var(--color-primary);
-	color: var(--color-text-dark);
+	color: var(--color-text);
 
-	font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+	font-family: var(--font-family);
 	line-height: 1.5;
-	font-weight: 400;
+	font-weight: var(--font-weight-3);
 
 	color-scheme: light dark;
 	transition: var(--transition-med);
@@ -18,7 +17,7 @@
 }
 
 a {
-	font-weight: 500;
+	font-weight: var(--font-weight-4);
 	color: var(--color-text-link);
 	text-decoration: inherit;
 }
@@ -53,24 +52,16 @@ button {
 	font-size: 1em;
 	font-weight: 500;
 	font-family: inherit;
-	background-color: #1a1a1a;
+	background-color: var(--color-accent);
 	cursor: pointer;
 	transition: border-color 0.25s;
 }
 button:hover {
-	border-color: #646cff;
-	background-color: #646cff;
+	border-color: var(--color-accent-bright);
+	background-color: var(--color-accent-bright);
 }
+
 button:focus,
 button:focus-visible {
 	outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-	/* a:hover {
-		color: #747bff;
-	} */
-	/* button {
-		background-color: #f9f9f9;
-	} */
 }

@@ -1,29 +1,36 @@
+/* * { outline: 1px solid rgba(255, 0, 0, 1); } */
+
 #Dashboard {
+	position: relative;
+	display: grid;
 	width : 100vw;
 	height: 100vh;
-	display: grid;
-	
+
+	grid-template-columns: var(--sidebar-width) 1fr;
 	color: var(--color-text);
-	
-	grid-template-columns: var(--sidebar-width, 16rem) 1fr;
+
 	transition: grid-template-columns 0.3s ease;
 }
-#Dashboard {
-	--sidebar-width: 25%;
-	@media (width <= 750px) {
-		--sidebar-width: 10%;
+	.sideBarOpen {
+		--sidebar-width: 20%;
+		@media (width <= 1200px) {
+			--sidebar-width: 25%;
+		}
+		@media (width <= 750px) {
+			--sidebar-width: 50%;
+		}
+		@media (width <= 500px) {
+			--sidebar-width: 100%;
+		}
+	}
+	/*
+	TODO:
+		Sidebar name and email should be hidden from sidebar when the screen size is beloe 750px. Profile pic, also should be shrunken, hidden and/or stylaized for fun
+	*/
+	.sideBarClosed {
+		/* grid-template-columns: 0 1fr; */
 		--sidebar-width: 0%;
 	}
-}
-/*
-TODO:
-	Sidebar name and email should be hidden from sidebar when the screen size is beloe 750px. Profile pic, also should be shrunken, hidden and/or stylaized for fun
- */
-#Dashboard.sideBarClosed {
-	grid-template-columns: 0 1fr;
-	--sidebar-width: 10%;
-	--sidebar-width: 0%;
-}
 
 h1 {
 	font-size: var(--font-size-7);
@@ -31,30 +38,48 @@ h1 {
 
 ul {
 	list-style-type: none;
-	padding: 1rem;
+	list-style: none;
+
+	display: flex;
+	flex-direction: column;
+	gap: 2%;
+
+	padding: 0%;
+	margin: 0%;
+
+	width: 100%;
 }
+
 
 /*#region ===== Overlay ===== */
-.MenuToggle {
-	top: 2.5%;
-	width: fit-content;
+.SideBarToggle {
 	aspect-ratio: 1;
 	position: fixed;
+	top: 2.5%;
 	left: calc(var(--sidebar-width) - 1.5rem);
+	width: 3rem;
+	aspect-ratio: 1;
 	z-index: 1000;
 }
-.MenuToggle Button {
-	font-size: var(--font-size-5);
-	padding: 0.75rem;
-	border-radius: 100%;
-}
+	.SideBarToggleButton {
+		background-color: var(--color-accent);
+		box-shadow: var(--box-shadow-light);
+		border-radius: 100%;
+		font-size: var(--font-size-5);
+		padding: 0.75rem;
+		width: 100%;
+		aspect-ratio: 1;
+	}
 /*#endregion*/
 
-
-/*#region ===== Side Menu ===== */
+/*#region ===== Side Bar ===== */
 #SideBar {
 	background: var(--color-base);
-	padding: 1rem;
+	box-shadow: var(--box-shadow-heavy);
+	padding: 2rem;
+	min-height: 0;
+}
+#SideBar p, #SideBar h1 {
 	color: var(--color-text-dark-bg);
 }
 
@@ -65,133 +90,393 @@ ul {
 		justify-content: center;
 	}
 	#SideBarTitleContainerBox > * {
-		margin      : 0.25rem;
-		margin-left : 0rem;
+		margin: 0.25rem;
+		margin-left: 0rem;
 		margin-right: 0rem;
 	}
 
-.SideBarItem {
-	display: flex;
-	gap: 0.2rem;
-}
+	.SideBarItem {
+		display: flex;
+		gap: 0.2rem;
+	}
 /*#endregion */
 
 /*#region ===== Main ===== */
 #Main {
 	background-color: var(--color-primary);
-	padding: 2rem;
-	width : 100%;
-	height: 100vh;
-	color: var(--color-text-light);
+	display: flex;
+	flex-direction: column;
+	align-content: space-between;
+	justify-content: space-between;
+
+	position: relative;
+	width: 100%;
+	height: 100%;
+	min-height: 0;
+
+	padding: 1.5rem;
+	padding-bottom: 0.5rem;
+	color: var(--color-text);
+	
+	/* overflow-x: hidden;
+	overflow-y: auto; */
 }
-	#MenuBar {
+	/*#region === Nav Bar === */
+	#NavBar {
 		/* TODO: Use grid here */
 		display: flex;
 		justify-content: space-between;
 	}
 		#FolderLocation {
-			font-size: var(--font-size-2);
-			color: var(--color-text-muted);
-		}
-		#NavBar ul {
 			display: flex;
-			gap: 4%;
-			font-size: var(--font-size-2);
-			color: var(--color-text-muted);
-			padding: 0;
-		}
-	
-	#Board {
-		height: 100%;
-		overflow: hidden;
-	}
-		#HeaderSection {
+			gap: 0.5em;
 			position: relative;
 			left: 2%;
+			font-size: var(--font-size-2);
+			color: var(--color-text-muted);
+		}
+			#FolderLocation a {
+				color: var(--color-text-muted);
+			}
+			#FolderLocation a:hover {
+				color: var(--color-text-link-highlight);
+			}
+			#FolderLocation p {
+				cursor: default;
+				/* user-select: none; */
+			}
+	/*#endregion */
+
+	/*#region === Nav Bar === */
+	#NavBar ul {
+		display: flex;
+		flex-direction: row;
+		gap: 4%;
+		font-size: var(--font-size-2);
+		color: var(--color-text-muted);
+		padding: 0;
+
+		@media (width <= 450px) {
+			display: none;
+		}
+	}
+	#NavBarToggle {
+		display: none;
+		@media (width <= 450px) {
+			display: inherit;
+		}
+	}
+	/*#endregion */
+
+	/*#region === Board === */
+	#HeaderSection {
+		position: relative;
+		left: 2%;
+		text-align: start;
+	}
+
+	#Board {
+		position: relative;
+		display: flex;
+		width: 100%;
+		height: 100%;
+		min-height: 0;
+	}
+
+		#Tasks {
+			position: relative;
+			width : 100%;
+			height: 100%;
+			min-height: 0;
 		}
 
-		#TaskLists {
-			display: flex;
-		}
+			#TaskLists {
+				position: relative;
+				display: flex;
+				justify-content: space-between;
+				width : 100%;
+				height: 100%;
+				min-height: 0;
+			}
+	/*#endregion */
+
+	/*#region === Statistics === */
+	/*#endregion */
 /*#endregion */
 
 
 /*#region ===== Objects ===== */
+/*#region === List Object === */
 .ListObject {
+	position: relative;
+	background: none;
 	display: flex;
 	flex-direction: column;
+
 	align-items: center;
+	padding-top: 0.5rem;
 
-	margin: 0.5rem;
-
-	max-width: 25%;
+	width : 100%;
+	height: 100%;
+	min-height: 0;
 }
 	.ListObject h4 {
 		color: var(--color-neutral);
 		font-weight: var(--font-weight-skinny);
+		
+		margin-bottom: 0.5rem;
 	}
+	.uList {
+		border-radius: var(--border-radius-3);
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
 
+		padding: 0.75rem;
+		width: 100%;
+		max-height: 100%;
+
+		overflow-x: hidden;
+		overflow-y: auto;
+		scrollbar-width: none;
+	}
+/*#endregion */
+
+/*#region === Card === */
 .Card {
-	background-color: var(--color-secondary);
-	padding: 0.25rem;
+	background-color: var(--color-secondary-muted);
+	border-radius: var(--border-radius-2);
+	box-shadow: var(--box-shadow-heavy);
+
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: space-between;
+	
+	padding: 0.5rem;
 	margin: 0;
-	margin-bottom: 1rem;
+
+	position: relative;
+	width: 100%;
 }
+.Card.empty {
+	box-shadow: none;
+	opacity: 50%;
+}
+
 	.CardTitleBox {
 		display: flex;
-		/* TODO: Items should be touching the edges */
+		align-content: center;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 0.25rem;
+		width: 100%;
 	}
 		.CardTitle {
+			display: flex;
 			color: var(--color-neutral);
 			font-weight: var(--font-weight-bold);
 		}
-		.CardMenuButton {
-			/* TODO: Modify Settings in Button components to be more flexible to customs */
+		.CardOptionsButton {
 			background: none;
+			color: var(--color-text);
+			justify-content: center;
+			padding: 0rem;
+			padding-left: 0.5rem;
+		}
+		.CardOptionsButton:hover {
+			background: var(--color-base-dim);
+			transform: scale(1.15);
+		}
+		.CardOptionsPopUp {
+			background-color: var(--color-secondary);
+			border-radius: var(--border-radius-1);
+
+			/* padding: 1rem; */
+
+			position: absolute;
+			left: 0%;
+			width: 30%;
+		}
+		.CardOptionsPopUp li {
+			padding: 0.25rem;
+			margin: 0rem;
+		}
+		.CardOptionsPopUp button {
+			background: none;
+			border-radius: var(--border-radius-1);
+			padding: 0rem;
+			margin: 0rem;
+			width: 100%;
+			color: var(--color-text);
+			font-size: var(--font-size-2);
+		}
+		/* .CardOptionsPopUp button:hover {
+			background: none;
+		} */
+		.CardOptionsPopUp hr {
+			align-self: center;
+			width: 80%;
+			color: var(--color-text);
 		}
 
-.Notifications {
-	display: flex;
-}
-	.MessagesNote, .ClipNote {
+	.CardBody {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 0.25rem;
+		/* min-height: 5rem; */
+	}
+
+	.CardFooter {
+		position: relative;
 		display: flex;
 	}
-	.MessagesNote img, .ClipNote img {
+		/* TODO:
+			These guys need work. they're for 
+			checkbox-type input feilds */
+		.PinnedIcon {
+			position: absolute;
+			top: calc(50% - 1.5rem);
+			left: calc(100% - 2rem);
+		}
+		.PinnedIcon:hover {
+			background: none;
+		}
+/*#endregion */
+
+/*#region === Add Task === */
+.AddTaskButton {
+	background-color: var(--color-base-muted);
+	border-radius: var(--border-radius-1);
+	font-size: var(--font-size-5);
+}
+/*#endregion */
+
+/*#region === Progress Bar === */
+.Progress {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 2 1fr;
+	gap: 0.25rem;
+	font-size: var(--font-size-2);
+}
+	.ProgressBar {
+		background-color: var(--color-primary);
+		border-radius: 1rem;
+		height: 1rem;
+		grid-column: span 2;
+		overflow: hidden;
+	}
+	.ProgressBarFill {
+		background: linear-gradient(
+			90deg,
+			var(--color-accent),
+			var(--color-accent-secondary)
+		);
+		border-radius: 1rem;
+		height: 100%;
+	}
+/*#endregion */
+
+/*#region === Notifications === */
+.Notifications {
+	display: flex;
+	gap: 10%;
+}
+	.MessagesNote,
+	.ClipNote {
+		display: flex;
+		position: relative;
+		width: 1.5rem;
+		aspect-ratio: 1;
+	}
+		.MessagesNote p,
+		.ClipNote p {
+			background-color: var(--color-accent-secondary-dim);
+			border-radius: 100%;
+
+			display: flex;
+			justify-content: center;
+
+			position: absolute;
+			top: -20%;
+			right: -20%;
+			width: 1.5em;
+			aspect-ratio: 1;
+
+			font-size: var(--font-size-1);
+			font-weight: var(--font-weight-chunky);
+			color: var(--color-text-dark-bg);
+		}
+/*#endregion */
+
+/*#region === Step Insert === */
+.StepsList {
+	border-radius: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-content  : center;
+}
+
+	.StepInsert {
+		border-radius: var(--border-radius-1);
+		display: flex;
+		align-items: center;
+		align-content: center;
+		justify-content: space-between;
+		
+		margin-bottom: 0.5rem;
+		height: 2.5rem;
+		max-height: 2.5rem;
+		
+		overflow: hidden;
+	}
+	.StepInsert:active {
+		transform: scale(0.98);
+	}
+		.StepInsertImg {
+			background-color: var(--color-neutral-white);
+			border-radius: 100%;
+			align-content: center;
+			justify-content: center;
+			margin: 0.25rem;
+			min-width : 2rem;
+			min-height: 2rem;
+			color: var(--color-text-light-bg);
+		}
+		
+		.StepInsertTitle, .StepInsertDetails {
+			align-content: center;
+			text-align: start;
+			font-size: var(--font-size-2);
+			font-weight: var(--font-weight-bold);
+			padding-left: 0.5rem;
+			width : 100%;
+			height: 100%;
+			color: var(--color-text-dark-bg);
+		}
+		.StepInsertDetails {
+			background-color: var(--color-accent-secondary);
+			border-radius: var(--border-radius-1);
+		}
+			.StepInsertTitle.hide, .StepInsertDetails.hide {
+				border-radius: 0%;
+				width: 0%;
+				transform: translateX(0%);
+			}
+
+/*#region === Gallery Object === */
+.GalleryObject {
+	display: flex;
+	flex-direction: row;
+	overflow-x: scroll;
+	margin-bottom: 0.25rem;
+}
+	.GalleryObject img {
 		width: 2rem;
 		aspect-ratio: 1;
 	}
-	.MessagesNote p, .ClipNote p {
-		font-size: var(--font-size-2);
-	}
-
-.StepInsert {
-	display: flex;
-}
-	.StepInsertImg {
-		border-radius: 100%;
-		width: 1rem;
-		aspect-ratio: 1;
-	}
-	.StepInsertTitle {
-		font-size: var(--font-size-2);
-		color: var(--color-text-dark-bg);
-	}
-	.StepInsertCheck {
-		border-radius: 100%;
-		width: 0.5rem;
-		aspect-ratio: 1;
-	}
-	.StepInsertDetails {
-		font-size: var(--font-size-2);
-		color: var(--color-text-dark-bg);
-	}
-
-.GalleryObject {
-	display: flex;
-	overflow-x: scroll;
-}
-.GalleryObject img {
-	width: 2.5rem;
-	aspect-ratio: 1;
-}
+/*#endregion */
+/*#endregion */
 /*#endregion */

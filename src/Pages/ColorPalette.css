@@ -1,0 +1,205 @@
+#ColorPaletteShowcase {
+	background-color: var(--color-primary);
+}
+
+.container {
+	background-color: hsla(0, 0%, 0%, 0.25);
+	border-radius: var(--border-radius-2);
+
+	display: flex;
+	flex-direction: column;
+	align-content: space-between;
+	justify-content: space-between;
+
+	margin: 1%;
+	padding: 0.5rem;
+}
+
+.colors {
+	border-radius: var(--border-radius-2);
+	display: flex;
+	
+	@media (max-width: 600px) {
+		overflow: hidden;
+	}
+}
+
+.box {
+	border-radius: var(--border-radius-1);
+	margin: 1%;
+	width: 100%;
+	height: 3rem;
+	color: var(--color-text-dark-bg);
+	transition: all 0.1s ease;
+
+	@media (max-width: 600px) {
+		border-radius: 0rem;
+		margin: 0;
+	}
+}
+.box:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+	transition: all 0.3s ease-in-out;
+}
+.box:active {
+	cursor: pointer;
+	transform: scale(1);
+}
+
+[data-theme="light"] .box:hover {
+	box-shadow: 0px 0px 10px var(--color-shadow-light);
+}
+[data-theme="dark"] .box:hover {
+	box-shadow: 0px 0px 10px var(--color-glow-dim);
+}
+
+.header {
+	margin: 0.5rem;
+	padding: 0.5rem;
+	background-color: var(--color-secondary-muted);
+	border-radius: var(--border-radius-2);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.text {
+	background-color: var(--color-base-dim);
+	border-radius: var(--border-radius-1);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	@media (max-width: 600px) {
+		font-size: 0;
+	}
+}
+
+div {
+	color: var(--color-text);
+	font-weight: var(--font-weight-bold);
+	text-align: center;
+}
+
+
+#text        { color: var(--color-text); }
+#highlighted { color: var(--color-text-highlight); }
+#special     { color: var(--color-text-special); }
+#link            { color: var(--color-text-link); }
+#linkHighlighted { color: var(--color-text-link-highlight); }
+#H1 { color: var(--color-text-h1); }
+#H2 { color: var(--color-text-h2); }
+#H3 { color: var(--color-text-h3); }
+#H4 { color: var(--color-text-h4); }
+
+
+#Base      { background-color: var(--color-base); }
+#BaseDim   { background-color: var(--color-base-dim); }
+#BaseMuted { background-color: var(--color-base-muted); }
+
+#NeutralBlack { background-color: var(--color-neutral-black); }
+#NeutralDark  { background-color: var(--color-neutral-dark); }
+#NeutralLight { background-color: var(--color-neutral-light); color: var(--color-text-light-bg) }
+#NeutralWhite { background-color: var(--color-neutral-white); color: var(--color-text-light-bg) }
+
+#Primary   { background-color: var(--color-primary); color: var(--color-text); }
+#Secondary { background-color: var(--color-secondary); color: var(--color-text); }
+#Contrast  { background-color: var(--color-contrast); color: var(--color-text-inverse); }
+#PrimaryMuted   { background-color: var(--color-primary-muted); color: var(--color-text); }
+#SecondaryMuted { background-color: var(--color-secondary-muted); color: var(--color-text); }
+#ContrastMuted  { background-color: var(--color-contrast-muted); color: var(--color-text-inverse); }
+
+
+#LegacyBrighter { background-color: var(--color-legacy-brighter); color: var(--color-text-light-bg) }
+#LegacyBright   { background-color: var(--color-legacy-bright); color: var(--color-text-light-bg) }
+#Legacy         { background-color: var(--color-legacy); }
+#LegacyDim      { background-color: var(--color-legacy-dim); }
+#LegacyDimmer   { background-color: var(--color-legacy-dimmer); }
+
+#AccentBrighter { background-color: var(--color-accent-brighter); color: var(--color-text-light-bg) }
+#AccentBright   { background-color: var(--color-accent-bright); color: var(--color-text-light-bg) }
+#Accent         { background-color: var(--color-accent); }
+#AccentDim      { background-color: var(--color-accent-dim); }
+#AccentDimmer   { background-color: var(--color-accent-dimmer); }
+#AccentSecondaryBrighter { background-color: var(--color-accent-secondary-brighter); color: var(--color-text-light-bg) }
+#AccentSecondaryBright   { background-color: var(--color-accent-secondary-bright); color: var(--color-text-light-bg) }
+#AccentSecondary         { background-color: var(--color-accent-secondary); }
+#AccentSecondaryDim      { background-color: var(--color-accent-secondary-dim); }
+#AccentSecondaryDimmer   { background-color: var(--color-accent-secondary-dimmer); }
+
+#AccentMutedBrighter { background-color: var(--color-accent-muted-brighter); color: var(--color-text-light-bg) }
+#AccentMutedBright   { background-color: var(--color-accent-muted-bright); color: var(--color-text-light-bg) }
+#AccentMuted         { background-color: var(--color-accent-muted); }
+#AccentMutedDim      { background-color: var(--color-accent-muted-dim); }
+#AccentMutedDimmer   { background-color: var(--color-accent-muted-dimmer); }
+#AccentMutedSecondaryBrighter { background-color: var(--color-accent-muted-secondary-brighter); color: var(--color-text-light-bg) }
+#AccentMutedSecondaryBright   { background-color: var(--color-accent-muted-secondary-bright); color: var(--color-text-light-bg) }
+#AccentMutedSecondary         { background-color: var(--color-accent-muted-secondary); }
+#AccentMutedSecondaryDim      { background-color: var(--color-accent-muted-secondary-dim); }
+#AccentMutedSecondaryDimmer   { background-color: var(--color-accent-muted-secondary-dimmer); }
+
+
+#ShadowHeavy { background-color: var(--color-base); box-shadow: var(--box-shadow-heavy); }
+#Shadow      { background-color: var(--color-base); box-shadow: var(--box-shadow); }
+#ShadowLight { background-color: var(--color-base); box-shadow: var(--box-shadow-light); }
+
+#GlowBright { background-color: var(--color-base); box-shadow: var(--box-glow-bright); }
+#Glow       { background-color: var(--color-base); box-shadow: var(--box-glow); }
+#GlowDim    { background-color: var(--color-base); box-shadow: var(--box-glow-dim); }
+
+
+#Red     { background-color: var(--color-red); }
+#Orange  { background-color: var(--color-orange); }
+#Yellow  { background-color: var(--color-yellow); }
+#Lime    { background-color: var(--color-lime); }
+#Green   { background-color: var(--color-green); }
+#Teal    { background-color: var(--color-teal); }
+#Cyan    { background-color: var(--color-cyan); }
+#Blue    { background-color: var(--color-blue); }
+#Indigo  { background-color: var(--color-indigo); }
+#Purple  { background-color: var(--color-purple); }
+#Violet  { background-color: var(--color-violet); }
+#Magenta { background-color: var(--color-magenta); }
+
+#MutedRed     { background-color: var(--color-muted-red); }
+#MutedOrange  { background-color: var(--color-muted-orange); }
+#MutedYellow  { background-color: var(--color-muted-yellow); }
+#MutedLime    { background-color: var(--color-muted-lime); }
+#MutedGreen   { background-color: var(--color-muted-green); }
+#MutedTeal    { background-color: var(--color-muted-teal); }
+#MutedCyan    { background-color: var(--color-muted-cyan); }
+#MutedBlue    { background-color: var(--color-muted-blue); }
+#MutedIndigo  { background-color: var(--color-muted-indigo); }
+#MutedPurple  { background-color: var(--color-muted-purple); }
+#MutedViolet  { background-color: var(--color-muted-violet); }
+#MutedMagenta { background-color: var(--color-muted-magenta); }
+
+#HighlightRed     { background-color: var(--color-highlight-red); }
+#HighlightOrange  { background-color: var(--color-highlight-orange); }
+#HighlightYellow  { background-color: var(--color-highlight-yellow); }
+#HighlightLime    { background-color: var(--color-highlight-lime); }
+#HighlightGreen   { background-color: var(--color-highlight-green); }
+#HighlightTeal    { background-color: var(--color-highlight-teal); }
+#HighlightCyan    { background-color: var(--color-highlight-cyan); }
+#HighlightBlue    { background-color: var(--color-highlight-blue); }
+#HighlightIndigo  { background-color: var(--color-highlight-indigo); }
+#HighlightPurple  { background-color: var(--color-highlight-purple); }
+#HighlightViolet  { background-color: var(--color-highlight-violet); }
+#HighlightMagenta { background-color: var(--color-highlight-magenta); }
+
+#DimRed     { background-color: var(--color-dim-red); }
+#DimOrange  { background-color: var(--color-dim-orange); }
+#DimYellow  { background-color: var(--color-dim-yellow); }
+#DimLime    { background-color: var(--color-dim-lime); }
+#DimGreen   { background-color: var(--color-dim-green); }
+#DimTeal    { background-color: var(--color-dim-teal); }
+#DimCyan    { background-color: var(--color-dim-cyan); }
+#DimBlue    { background-color: var(--color-dim-blue); }
+#DimIndigo  { background-color: var(--color-dim-indigo); }
+#DimPurple  { background-color: var(--color-dim-purple); }
+#DimViolet  { background-color: var(--color-dim-violet); }
+#DimMagenta { background-color: var(--color-dim-magenta); }
+
+
+#M { background-color: var(--color-m); }

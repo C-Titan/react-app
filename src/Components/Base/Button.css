@@ -1,6 +1,6 @@
 .button {
 	border-radius: 10px;
-	box-shadow: var(--box-shadow-light);
+	box-shadow: var(--box-shadow-bright);
 
 	user-select: none;
 
@@ -12,9 +12,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
-	min-width: max-content;
-	min-height: 1rem;
 
 	font-weight: var(--font-weight-bold);
 	color: var(--color-text-dark-bg);
@@ -31,24 +28,13 @@
 	transform: scale(0.95);
 }
 
-a, a:hover, a:focus {
+a,
+a:hover,
+a:focus {
 	color: var(--color-text-dark-bg);
 }
 
 /*#region States */
-.icon {
-	padding: 0.25rem;
-	font-size: 1rem;
-	width: max-content;
-	aspect-ratio: 1 / 1;
-}
-
-.mixed {
-	padding: 0.5rem;
-	padding-left: 0.5rem;
-	padding-right: 1rem;
-}
-
 .disabled {
 	opacity: 50%;
 	cursor: not-allowed;
@@ -65,15 +51,14 @@ a, a:hover, a:focus {
 
 /*#region Variants */
 .Default {
-	/* background: linear-gradient(90deg, red, yellow, green); */
 	background-color: var(--color-accent);
 	border-width: 0px;
 }
 .Default:hover {
-	background-color: var(--color-accent-light);
+	background-color: var(--color-accent-bright);
 }
 .Default:active {
-	background-color: var(--color-accent-dark);
+	background-color: var(--color-accent-dim);
 }
 
 .Secondary {
@@ -81,10 +66,10 @@ a, a:hover, a:focus {
 	border-width: 0px;
 }
 .Secondary:hover {
-	background-color: var(--color-accent-muted-light);
+	background-color: var(--color-accent-muted-bright);
 }
 .Secondary:active {
-	background-color: var(--color-accent-muted-dark);
+	background-color: var(--color-accent-muted-dim);
 	border-width: 0px;
 }
 
@@ -92,12 +77,13 @@ a, a:hover, a:focus {
 	background: none;
 	box-shadow: none;
 	border: none;
+	color: var(--color-text);
 }
 .Ghost:hover {
-	background-color: var(--color-accent-light);
+	background-color: var(--color-accent-bright);
 }
 .Ghost:active {
-	background-color: var(--color-accent-dark);
+	background-color: var(--color-accent-muted-dimmer);
 }
 
 .Danger {

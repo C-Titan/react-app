@@ -36,9 +36,9 @@
 	justify-content: center;
 	gap: 0.5rem;
 
-	min-width : 1rem;
+	min-width: 1rem;
 	min-height: 1rem;
-	max-width : fit-content;
+	max-width: fit-content;
 
 	font-weight: var(--font-weight-bold);
 	color: var(--color-text);
@@ -47,8 +47,8 @@
 }
 
 .MenuListItem:hover {
-	background-color: var(--color-accent-dark);
-	box-shadow: 8px 8px 8px var(--shadow-color-light);
+	background-color: var(--color-accent-dim);
+	box-shadow: 8px 8px 8px var(--shadow-color-bright);
 }
 a:hover {
 	color: var(--color-text-special);

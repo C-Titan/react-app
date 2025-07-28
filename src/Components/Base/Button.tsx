@@ -14,10 +14,7 @@ interface ButtonProps {
 
 	width? : string;
 	height?: string;
-	size?: "content" | "icon" | "mixed";
 	padding?: string;
-	color?: string;
-	style?: React.CSSProperties;
 
 	icon?: string;
 	children?: React.ReactNode;
@@ -37,13 +34,6 @@ export const Button: React.FC<ButtonProps> = ({
 	loading,
 	disabled,
 
-	width,
-	height,
-	size = "content",
-	padding,
-	color,
-	style,
-
 	icon = "",
 	onClick,
 	children,
@@ -51,7 +41,7 @@ export const Button: React.FC<ButtonProps> = ({
 	ariaLabel,
 	ariaDescribedBy,
 }) => {
-	if (id === "") {id = useId()}
+	id = id || useId();
 	const isDisabled = disabled || loading;
 
 	const variantStyle = {
@@ -62,25 +52,10 @@ export const Button: React.FC<ButtonProps> = ({
 	};
 
 	const _className =
-		className + 
-		` button ` +
-		`${variantStyle[variant]} ` +
-		`${isDisabled ? "disabled" : ""} ` +
-		`${loading && !isDisabled ? " loading" : ""} ` +
-		`${(size === "icon") ? 
-			"icon" : 
-			(size === "mixed") ? 
-				" mixed" : 
-				""}`;
-
-	if (style === undefined) {
-		style = {
-			width: width,
-			height: height,
-			padding,
-			backgroundColor: color,
-		};
-	}
+		`button ${variantStyle[variant]} 
+		${isDisabled ? "disabled" : ""} 
+		${loading && !isDisabled ? "loading" : ""} 
+		${className || ""} `;
 
 	const content = (
 		<>
@@ -92,32 +67,30 @@ export const Button: React.FC<ButtonProps> = ({
 
 	if (href) {
 		return (
-			<a 
+			<a
 				id={id}
 				href={href}
 				className={_className}
-				type={type}
 				onClick={onClick}
-				style={style}
-				aria-label = { ariaLabel || id }
-				aria-describedby = { ariaDescribedBy || id }
+				aria-label={ariaLabel || id}
+				aria-describedby={ariaDescribedBy || id}
 			>
 				{content}
 			</a>
 		);
+	} else {
+		return (
+			<button
+				id={id}
+				className={_className}
+				type={type}
+				onClick={onClick}
+				disabled={disabled || loading}
+				aria-label={ariaLabel || id}
+				aria-describedby={ariaDescribedBy || id}
+			>
+				{content}
+			</button>
+		);
 	}
-	return (
-		<button
-			id={id}
-			className={_className}
-			type={type}
-			onClick={onClick}
-			disabled={ disabled || loading }
-			style={style}
-			aria-label = { ariaLabel || id }
-			aria-describedby = { ariaDescribedBy || id }
-		>
-			{content}
-		</button>
-	);
 };

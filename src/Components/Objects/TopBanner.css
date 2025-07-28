@@ -1,5 +1,5 @@
 #TopBanner {
-	background-color: var(--color-accent-dark);
+	background-color: var(--color-accent-dim);
 
 	position: fixed;
 	display: flex;
@@ -9,7 +9,7 @@
 	padding: 0rem;
 	padding-left: 1rem;
 	padding-right: 1rem;
-	color: var(--color-text-dark-bg);
+	color: var(--color-text-dim-bg);
 
 	top: 0;
 	width: 100%;
@@ -19,7 +19,7 @@
 
 #TopBanner a {
 	text-decoration: underline;
-	color: var(--color-text-dark-bg);
+	color: var(--color-text-dim-bg);
 }
 #TopBanner a:hover {
 	color: var(--color-text-highlight);
@@ -41,7 +41,7 @@
 	width: fit-content;
 	height: fit-content;
 	font-size: 1.25rem;
-	color: var(--color-text-dark-bg);
+	color: var(--color-text-dim-bg);
 	cursor: pointer;
 	transition: var(--transition-fast);
 }

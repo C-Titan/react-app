@@ -21,71 +21,73 @@
 }
 
 /*#region ========= CSS RESET ========= */
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 
-		transition: var(--transition-fast);
-	}
-	html {
-		font-size: var(--font-size-3);
-		height: auto;
-		max-width: 100vw;
-		overflow: hidden;
-		overflow-y: scroll;
-		scroll-behavior: smooth;
-	}
+	transition: var(--transition-fast );
+}
+html {
+	font-size: var(--font-size-3 );
+	height: auto;
+	max-width: 100vw;
+	overflow: hidden;
+	overflow-y: scroll;
+	scroll-behavior: smooth;
+}
 
-	body {
-		background-color: var(--color-primary-muted);
+body {
+	background-color: var(--color-primary-muted );
 
-		padding: 0rem;
-		margin: 0rem;
-		
-		width : 100vw;
-		height: auto;
-		
-		font-family: var(--font-family);
-		color: var(--color-text);
-		line-height: 1.4;
-		
-		overflow-x: hidden;
-	}
+	padding: 0rem;
+	margin: 0rem;
+
+	width: 100vw;
+	height: auto;
+
+	font-family: var(--font-family );
+	color: var(--color-text );
+	line-height: 1.4;
+
+	overflow-x: hidden;
+}
 /*#endregion */
 
 #root {
 	width: 100vw;
+	transition: var(--transition-med);
 }
 
 /* prettier-ignore */
 :root {
 	/* Fonts */
-	--font-family: sans-serif;
+	--font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 
 	--font-size: 16px;
-	--font-size-1: calc(var(--font-size) * 0.5);
-	--font-size-2: calc(var(--font-size) * 0.75);
-	--font-size-3: calc(var(--font-size) * 1);
-	--font-size-4: calc(var(--font-size) * 1.25);
-	--font-size-5: calc(var(--font-size) * 1.5);
-	--font-size-6: calc(var(--font-size) * 1.75);
-	--font-size-7: calc(var(--font-size) * 2);
-	--font-size-8: calc(var(--font-size) * 2.5);
-	--font-size-9: calc(var(--font-size) * 3);
+	--font-size-1: calc(var(--font-size) * 0.5 );
+	--font-size-2: calc(var(--font-size) * 0.75 );
+	--font-size-3: calc(var(--font-size) * 1 );
+	--font-size-4: calc(var(--font-size) * 1.25 );
+	--font-size-5: calc(var(--font-size) * 1.5 );
+	--font-size-6: calc(var(--font-size) * 1.75 );
+	--font-size-7: calc(var(--font-size) * 2 );
+	--font-size-8: calc(var(--font-size) * 2.5 );
+	--font-size-9: calc(var(--font-size) * 3 );
 
 	--font-weight-skiny : 100;
-	--font-weight-thin  : 200;
+	--font-weight-thin  : 250;
 	--font-weight-def   : 400;
-	--font-weight-bold  : 600;
-	--font-weight-chunky: 900;
+	--font-weight-bold  : 650;
+	--font-weight-chunky: 999;
 
 	/* UI */
-	--border-radius-1: 0.5em;
-	--border-radius-2: 1em;
-	--border-radius-3: 2em;
-	--border-radius-4: 3em;
-	--border-radius-5: 5em;
+	--border-radius-1: 0.25em;
+	--border-radius-2: 0.5em;
+	--border-radius-3: 1em;
+	--border-radius-4: 2em;
+	--border-radius-5: 3em;
+	--border-radius-6: 5em;
 
 	--edge-gap-1: 0.25%;
 	--edge-gap-2: 0.5%;
@@ -109,11 +111,13 @@
 	--z-index-overlay: 1000;
 
 	/* VFX */
-	--box-shadow-heavy: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-		0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	--box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
-	--box-shadow-light: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
-
+	--box-shadow-heavy: 0px 4px 16px 0px var(--color-shadow-heavy );
+	--box-shadow      : 0px 4px  8px 0px var(--color-shadow );
+	--box-shadow-light: 0px 4px  8px 0px var(--color-shadow-light );
+	--box-glow-bright : 0px 0px 16px 0px var(--color-glow-bright );
+	--box-glow        : 0px 0px  8px 0px var(--color-glow );
+	--box-glow-dim    : 0px 0px  8px 0px var(--color-glow-dim );
+	
 	/* ANIMATIONS */
 	--transition-sdark: all 0.5s ease;
 	--transition-med  : all 0.3s ease;
@@ -124,157 +128,262 @@
 	}
 }
 
-/*#region Colors */
-/* prettier-ignore */
-:root {
-	/* 
-	--hue-main    : 235;
+/*#region Color Themes */
+.legacy {
+	--hue-main: 235;
+	--saturation-main: 50%;
+	--lightness-main : 50%;
+	
 	--hue-accent-1: 200;
 	--hue-accent-2: 125;
-	--lightness: 100%;
-	--saturation: 100%;
-	*/
-	/* If I decided I want to modify the main hue of the whole page, 
-	I'd need to plug in these guys into the hue of every color val in this list.
-	Same as lightness and saturation.*/
+	--saturation-accent: 100%;
+	--lightness-accent :  50%;
+}
+.marine {
+	--hue-main: 200;
+	--saturation-main: 50%;
+	--lightness-main : 50%;
 	
-	--color-base     : hsl(235, 50%, 20%);
-	--color-base-muted     : hsl(235, 25%, 20%);
+	--hue-accent-1: 175;
+	--hue-accent-2: 120;
+	--saturation-accent: 100%;
+	--lightness-accent :  50%;
+}
+.purple {
+	--hue-main: 290;
+	--saturation-main: 50%;
+	--lightness-main : 50%;
+	
+	--hue-accent-1: 300;
+	--hue-accent-2: 340;
+	--saturation-accent: 100%;
+	--lightness-accent :  50%;
+}
+.hellscape { /* WIP */
+	--hue-main:   0;
+	--saturation-main: 50%;
+	--lightness-main : 50%;
+	
+	--hue-accent-1:  0;
+	--hue-accent-2: 50;
+	--saturation-accent: 100%;
+	--lightness-accent :  50%;
+}
+.dragonfruit {
+	--hue-main: 320;
+	--lightness-main : 50%;
+	--saturation-main: 50%;
+	
+	--hue-accent-1: 330;
+	--hue-accent-2:  90;
+	--lightness-accent :  50%;
+	--saturation-accent: 100%;
+}
+.passionfruit {
+	--hue-main: 330;
+	--lightness-main : 50%;
+	--saturation-main: 50%;
+	
+	--hue-accent-1: 50;
+	--hue-accent-2: 30;
+	--lightness-accent :  50%;
+	--saturation-accent: 100%;
+}
+/*#endregion */
 
+/*#region Color Variables */
+:root {
+	/* hsl */
+	--saturation-neon: 100%;
+	--lightness-neon: 50%;
+
+	/* Main Color */
+	--color-base      :  hsl( var(--hue-main), calc(var(--saturation-main) * 1.25), calc(var(--lightness-main) * 0.7) );
+	--color-base-muted:  hsl( var(--hue-main), calc(var(--saturation-main) * 0.5), var(--lightness-main) );
+	--color-base-dim  : hsla( var(--hue-main), var(--saturation-main), calc(var(--lightness-main) * 0.95), 0.25 );
+
+	/* Colors */
+	--color-neutral-black: hsl(0, 0%,  0%);
 	--color-neutral-dark : hsl(0, 0%, 25%);
-	--color-neutral      : hsl(0, 0%, 50%);
-	--color-neutral-light: hsl(0, 0%, 75%);
+	--color-neutral-light: hsl(0, 0%, 50%);
+	--color-neutral-white: hsl(0, 0%, 75%);
 
-
-	--color-text-link: hsl(225, 50%, 40%);
-	--color-text-link-highlight: hsl(209, 54%, 52%);
-	--color-text-error: hsl(10, 100%, 50%);
-	--color-text-warning: hsl(40, 100%, 50%);
-
-
-	--color-shadow-light: hsla(230, 80%, 5%, 0.2);
-	--color-shadow      : hsla(230, 80%, 5%, 0.5);
-	--color-shadow-heavy: hsla(230, 80%, 5%, 0.8);
-
-	--color-glow-light: hsla(230, 80%, 95%, 0.2);
-	--color-glow      : hsla(230, 80%, 95%, 0.5);
-	--color-glow-heavy: hsla(230, 80%, 95%, 0.8);
-
-
-	--color-red    : hsl(  0, 80%, 50%);
-	--color-orange : hsl( 30, 80%, 50%);
-	--color-yellow : hsl( 60, 80%, 50%);
-	--color-lime   : hsl( 90, 80%, 50%);
-	--color-green  : hsl(120, 80%, 50%);
-	--color-teal   : hsl(150, 80%, 50%);
-	--color-cyan   : hsl(180, 80%, 50%);
-	--color-blue   : hsl(210, 80%, 50%);
-	--color-indego : hsl(240, 80%, 50%);
-	--color-purple : hsl(270, 80%, 50%);
-	--color-violet : hsl(300, 80%, 50%);
-	--color-magenta: hsl(330, 80%, 50%);
-}
-
-/* prettier-ignore */
-[data-theme = "light"] {
-	--color-primary  : hsl(235, 80%, 85%);
-	--color-secondary: hsl(235, 30%, 90%);
-	--color-contrast : hsl(235, 15%, 20%);
-	--color-primary-muted  : hsl(235, 40%, 85%);
-	--color-secondary-muted: hsl(235, 15% , 90%);
-	--color-contrast-muted : hsl(235, 7.5%, 10%);
-
-	/*
-	--color-unused-lighter: hsl(150, 40%, 37.5%);
-	--color-unused-light   : hsl(175, 40%, 30%);
-	--color-unused         : hsl(200, 40%, 25%);
-	--color-unused-dark    : hsl(225, 40%, 20%);
-	--color-unused-darker : hsl(250, 40%, 12.5%);
-	*/
-	/* leaving these here cuz I like the colors */
-
-
-	--color-accent-lighter: hsl(170, 50%, 75%);
-	--color-accent-light  : hsl(185, 50%, 50%);
-	--color-accent        : hsl(200, 50%, 50%);
-	--color-accent-dark   : hsl(215, 50%, 25%);
-	--color-accent-darker : hsl(230, 50%, 15%);
-	--color-accent-secondary-lighter: hsl( 90, 50%, 75%);
-	--color-accent-secondary-light  : hsl(105, 50%, 50%);
-	--color-accent-secondary        : hsl(125, 50%, 50%);
-	--color-accent-secondary-dark   : hsl(140, 50%, 25%);
-	--color-accent-secondary-darker : hsl(165, 50%, 15%);
-
-	--color-accent-muted-lighter: hsl(170, 20%, 75%);
-	--color-accent-muted-light  : hsl(185, 20%, 50%);
-	--color-accent-muted        : hsl(200, 20%, 50%);
-	--color-accent-muted-dark   : hsl(215, 20%, 25%);
-	--color-accent-muted-darker : hsl(230, 20%, 15%);
-	--color-accent-muted-secondary-lighter: hsl( 90, 20%, 75%);
-	--color-accent-muted-secondary-light  : hsl(105, 20%, 50%);
-	--color-accent-muted-secondary        : hsl(125, 20%, 50%);
-	--color-accent-muted-secondary-dark   : hsl(140, 20%, 25%);
-	--color-accent-muted-secondary-darker : hsl(165, 20%, 15%);
-
-
-	--color-text          : hsl(240, 50%, 10%);
-	--color-text-inverse  : hsl(240, 50%, 90%);
-	--color-text-muted        : hsl(240, 25%, 20%);
-	--color-text-muted-inverse: hsl(240, 25%, 80%);
-		
-	--color-text-light-bg : hsl(240, 50%, 10%);
-	--color-text-dark-bg  : hsl(240, 50%, 90%);
-	--color-text-highlight: hsl(209, 50%, 50%);
+	/* Text Colors */
+	--color-text-light-bg : hsl( calc(var(--hue-main) + 5), 50%, 10% );
+	--color-text-dark-bg  : hsl( calc(var(--hue-main) + 5), 50%, 90% );
+	--color-text-highlight: hsl( calc(var(--hue-accent-1) + 15), 75%, 50% );
+	--color-text-special  : hsl( calc(var(--hue-accent-2) + 15), 75%, 50% );
 	
-	--color-text-h1: hsl(225, 60%, 65%);
-	--color-text-h2: hsl(260, 60%, 35%);
-	--color-text-h3: hsl(285, 60%, 35%);
+	--color-text-link          : hsl( calc(var(--hue-main) - 10), 50%, 50% );
+	--color-text-link-highlight: hsl( calc(var(--hue-main) - 30), 55%, 60% );
+
+	--color-text-error  : hsl(10, 100%, 50% );
+	--color-text-warning: hsl(40, 100%, 50% );
+
+	/* Shadow & Glow Colors */
+	--color-shadow-light: hsla(var(--hue-main), 100%, 5%, 0.5 );
+	--color-shadow      : hsla(var(--hue-main), 100%, 5%, 0.75 );
+	--color-shadow-heavy: hsla(var(--hue-main), 100%, 5%, 1 );
+
+	--color-glow-bright: hsla(var(--hue-main), 100%, 95%, 0.5 );
+	--color-glow       : hsla(var(--hue-main), 100%, 95%, 0.25 );
+	--color-glow-dim   : hsla(var(--hue-main), 100%, 95%, 0.125 );
 }
-[data-theme = "dark"] {
-	--color-primary  : hsl(235, 30%, 10%);
-	--color-secondary: hsl(235, 20%, 15%);
-	--color-contrast : hsl(235, 15%, 90%);
-	--color-primary-muted  : hsl(235, 15%, 10%);
-	--color-secondary-muted: hsl(235, 10% , 15%);
-	--color-contrast-muted : hsl(235, 7.5%, 90%);
 
-	/*
-	--color-unused-lighter: hsl(150, 40%, 62.5%);
-	--color-unused-light   : hsl(175, 40%, 70%);
-	--color-unused         : hsl(200, 40%, 75%);
-	--color-unused-dark    : hsl(225, 40%, 80%);
-	--color-unused-darker : hsl(250, 40%, 87.5%);
-	*/
+/* Neon Colors */
+:root {
+	--color-red    : hsl(  0, var(--saturation-neon), var(--lightness-neon) );
+	--color-orange : hsl( 30, var(--saturation-neon), var(--lightness-neon) );
+	--color-yellow : hsl( 60, var(--saturation-neon), var(--lightness-neon) );
+	--color-lime   : hsl( 90, var(--saturation-neon), var(--lightness-neon) );
+	--color-green  : hsl(120, var(--saturation-neon), var(--lightness-neon) );
+	--color-teal   : hsl(150, var(--saturation-neon), var(--lightness-neon) );
+	--color-cyan   : hsl(180, var(--saturation-neon), var(--lightness-neon) );
+	--color-blue   : hsl(210, var(--saturation-neon), var(--lightness-neon) );
+	--color-indigo : hsl(240, var(--saturation-neon), var(--lightness-neon) );
+	--color-purple : hsl(270, var(--saturation-neon), var(--lightness-neon) );
+	--color-violet : hsl(300, var(--saturation-neon), var(--lightness-neon) );
+	--color-magenta: hsl(330, var(--saturation-neon), var(--lightness-neon) );
 
-	--color-accent-lighter: hsl(170, 50%, 60%);
-	--color-accent-light  : hsl(185, 50%, 65%);
-	--color-accent        : hsl(200, 50%, 55%);
-	--color-accent-dark   : hsl(215, 50%, 40%);
-	--color-accent-darker : hsl(230, 50%, 40%);
-	--color-accent-secondary-lighter: hsl( 90, 50%, 60%);
-	--color-accent-secondary-light  : hsl(105, 50%, 65%);
-	--color-accent-secondary        : hsl(125, 50%, 55%);
-	--color-accent-secondary-dark   : hsl(140, 50%, 40%);
-	--color-accent-secondary-darker : hsl(165, 50%, 40%);
+	--color-muted-red    : hsl( 20, calc(var(--saturation-neon) * 0.5), var(--lightness-neon) );
+	--color-muted-orange : hsl( 50, calc(var(--saturation-neon) * 0.5), var(--lightness-neon) );
+	--color-muted-yellow : hsl( 80, calc(var(--saturation-neon) * 0.5), var(--lightness-neon) );
+	--color-muted-lime   : hsl(110, calc(var(--saturation-neon) * 0.5), var(--lightness-neon) );
+	--color-muted-green  : hsl(140, calc(var(--saturation-neon) * 0.5), var(--lightness-neon) );
+	--color-muted-teal   : hsl(170, calc(var(--saturation-neon) * 0.5), var(--lightness-neon) );
+	--color-muted-cyan   : hsl(200, calc(var(--saturation-neon) * 0.5), var(--lightness-neon) );
+	--color-muted-blue   : hsl(230, calc(var(--saturation-neon) * 0.5), var(--lightness-neon) );
+	--color-muted-indigo : hsl(260, calc(var(--saturation-neon) * 0.5), var(--lightness-neon) );
+	--color-muted-purple : hsl(290, calc(var(--saturation-neon) * 0.5), var(--lightness-neon) );
+	--color-muted-violet : hsl(320, calc(var(--saturation-neon) * 0.5), var(--lightness-neon) );
+	--color-muted-magenta: hsl(350, calc(var(--saturation-neon) * 0.5), var(--lightness-neon) );
 
-	--color-accent-muted-lighter: hsl(170, 20%, 60%);
-	--color-accent-muted-light  : hsl(185, 20%, 65%);
-	--color-accent-muted        : hsl(200, 20%, 55%);
-	--color-accent-muted-dark   : hsl(215, 20%, 40%);
-	--color-accent-muted-darker : hsl(230, 20%, 40%);
-	--color-accent-muted-secondary-lighter: hsl( 90, 20%, 60%);
-	--color-accent-muted-secondary-light  : hsl(105, 20%, 65%);
-	--color-accent-muted-secondary        : hsl(125, 20%, 55%);
-	--color-accent-muted-secondary-dark   : hsl(140, 20%, 40%);
-	--color-accent-muted-secondary-darker : hsl(165, 20%, 40%);
+	--color-highlight-red    : hsl( 340, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) + 30%), 100%) );
+	--color-highlight-orange : hsl(  10, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) + 30%), 100%) );
+	--color-highlight-yellow : hsl(  40, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) + 30%), 100%) );
+	--color-highlight-lime   : hsl(  70, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) + 30%), 100%) );
+	--color-highlight-green  : hsl( 100, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) + 30%), 100%) );
+	--color-highlight-teal   : hsl( 130, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) + 30%), 100%) );
+	--color-highlight-cyan   : hsl( 160, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) + 30%), 100%) );
+	--color-highlight-blue   : hsl( 190, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) + 30%), 100%) );
+	--color-highlight-indigo : hsl( 220, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) + 30%), 100%) );
+	--color-highlight-purple : hsl( 250, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) + 30%), 100%) );
+	--color-highlight-violet : hsl( 280, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) + 30%), 100%) );
+	--color-highlight-magenta: hsl( 310, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) + 30%), 100%) );
+	--color-highlight-red    : hsl( 340, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) + 30%), 100%) );
 
-	--color-text          : hsl(240, 100%, 90%);
-	--color-text-inverse  : hsl(240, 100%, 10%);
-	--color-text-special  : hsl(125, 100%, 90%);
-	--color-text-highlight: hsl(209, 100%, 50%);
+	--color-dim-red    : hsl(  20, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) - 30%), 100%) );
+	--color-dim-orange : hsl(  50, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) - 30%), 100%) );
+	--color-dim-yellow : hsl(  80, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) - 30%), 100%) );
+	--color-dim-lime   : hsl( 110, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) - 30%), 100%) );
+	--color-dim-green  : hsl( 140, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) - 30%), 100%) );
+	--color-dim-teal   : hsl( 170, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) - 30%), 100%) );
+	--color-dim-cyan   : hsl( 200, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) - 30%), 100%) );
+	--color-dim-blue   : hsl( 230, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) - 30%), 100%) );
+	--color-dim-indigo : hsl( 260, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) - 30%), 100%) );
+	--color-dim-purple : hsl( 290, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) - 30%), 100%) );
+	--color-dim-violet : hsl( 320, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) - 30%), 100%) );
+	--color-dim-magenta: hsl( 350, var(--saturation-neon), clamp(0%, calc(var(--lightness-neon) - 30%), 100%) );
+}
 
-	--color-text-h1: hsl(225, 60%, 65%);
-	--color-text-h2: hsl(260, 60%, 65%);
-	--color-text-h3: hsl(285, 60%, 65%);
+/* Light Theme Variables */
+[data-theme="light"] {
+	/* Main Colors */
+	--color-primary  : hsl( var(--hue-main), calc(var(--saturation-main) * 1.5), calc(var(--lightness-main) * 1.8) );
+	--color-secondary: hsl( var(--hue-main), calc(var(--saturation-main) * 1.5), calc(var(--lightness-main) * 1.6) );
+	--color-contrast : hsl( var(--hue-main), calc(var(--saturation-main) * 1  ), calc(var(--lightness-main) * 0.2) );
+	--color-primary-muted  : hsl( var(--hue-main), calc(var(--saturation-main) * 0.5), calc(var(--lightness-main) * 1.4) );
+	--color-secondary-muted: hsl( var(--hue-main), calc(var(--saturation-main) * 0.5), calc(var(--lightness-main) * 1.2) );
+	--color-contrast-muted : hsl( var(--hue-main), calc(var(--saturation-main) * 0.5), calc(var(--lightness-main) * 0.0) );
+
+	/* Legacy Colors */
+	--color-legacy-brighter: hsl(150, 80%, 60% );
+	--color-legacy-bright  : hsl(175, 80%, 50% );
+	--color-legacy         : hsl(200, 80%, 45% );
+	--color-legacy-dim     : hsl(225, 80%, 40% );
+	--color-legacy-dimmer  : hsl(250, 80%, 30% );
+
+	/* Accent Colors */
+	--color-accent-brighter: hsl( calc(var(--hue-accent-1) - 30), calc(var(--saturation-accent) * 0.8),  calc(var(--lightness-accent) * 1.4) );
+	--color-accent-bright  : hsl( calc(var(--hue-accent-1) - 15), calc(var(--saturation-accent) * 0.8),  calc(var(--lightness-accent) * 1.25) );
+	--color-accent         : hsl( calc(var(--hue-accent-1) + 00), calc(var(--saturation-accent) * 0.8),  calc(var(--lightness-accent) * 1) );
+	--color-accent-dim     : hsl( calc(var(--hue-accent-1) + 15), calc(var(--saturation-accent) * 0.8),  calc(var(--lightness-accent) * 0.75) );
+	--color-accent-dimmer  : hsl( calc(var(--hue-accent-1) + 30), calc(var(--saturation-accent) * 0.8),  calc(var(--lightness-accent) * 0.5) );
+	--color-accent-secondary-brighter: hsl( calc(var(--hue-accent-2) - 30), calc(var(--saturation-accent) * 0.8), calc(var(--lightness-accent) * 1.4) );
+	--color-accent-secondary-bright  : hsl( calc(var(--hue-accent-2) - 15), calc(var(--saturation-accent) * 0.8), calc(var(--lightness-accent) * 1.25) );
+	--color-accent-secondary         : hsl( calc(var(--hue-accent-2) + 00), calc(var(--saturation-accent) * 0.8), calc(var(--lightness-accent) * 1) );
+	--color-accent-secondary-dim     : hsl( calc(var(--hue-accent-2) + 15), calc(var(--saturation-accent) * 0.8), calc(var(--lightness-accent) * 0.75) );
+	--color-accent-secondary-dimmer  : hsl( calc(var(--hue-accent-2) + 30), calc(var(--saturation-accent) * 0.8), calc(var(--lightness-accent) * 0.5) );
+
+	--color-accent-muted-brighter: hsl( calc(var(--hue-accent-1) - 30), calc(var(--saturation-accent) * 0.4), calc(var(--lightness-accent) * 1.3) );
+	--color-accent-muted-bright  : hsl( calc(var(--hue-accent-1) - 15), calc(var(--saturation-accent) * 0.4), calc(var(--lightness-accent) * 1.15) );
+	--color-accent-muted         : hsl( calc(var(--hue-accent-1) + 00), calc(var(--saturation-accent) * 0.4), calc(var(--lightness-accent) * 1) );
+	--color-accent-muted-dim     : hsl( calc(var(--hue-accent-1) + 15), calc(var(--saturation-accent) * 0.4), calc(var(--lightness-accent) * 0.85) );
+	--color-accent-muted-dimmer  : hsl( calc(var(--hue-accent-1) + 30), calc(var(--saturation-accent) * 0.4), calc(var(--lightness-accent) * 0.7) );
+	--color-accent-muted-secondary-brighter: hsl( calc(var(--hue-accent-2) - 30), calc(var(--saturation-accent) * 0.4), calc(var(--lightness-accent) * 1.3) );
+	--color-accent-muted-secondary-bright  : hsl( calc(var(--hue-accent-2) - 15), calc(var(--saturation-accent) * 0.4), calc(var(--lightness-accent) * 1.15) );
+	--color-accent-muted-secondary         : hsl( calc(var(--hue-accent-2) + 00), calc(var(--saturation-accent) * 0.4), calc(var(--lightness-accent) * 1) );
+	--color-accent-muted-secondary-dim     : hsl( calc(var(--hue-accent-2) + 15), calc(var(--saturation-accent) * 0.4), calc(var(--lightness-accent) * 0.85) );
+	--color-accent-muted-secondary-dimmer  : hsl( calc(var(--hue-accent-2) + 30), calc(var(--saturation-accent) * 0.4), calc(var(--lightness-accent) * 0.7) );
+
+	/* Text Colors */
+	--color-text        : hsl( calc(var(--hue-main) + 5), 50%, 20% );
+	--color-text-inverse: hsl( calc(var(--hue-main) + 5), 50%, 90% );
+	--color-text-muted        : hsla( calc(var(--hue-main) + 5), 25%, 20%, 0.7 );
+	--color-text-muted-inverse: hsla( calc(var(--hue-main) + 5), 25%, 80%, 0.7 );
+
+	--color-text-h2: hsl( calc(var(--hue-main) + 25), 70%, 40% );
+	--color-text-h1: hsl( calc(var(--hue-main) - 10), 70%, 40% );
+	--color-text-h3: hsl( calc(var(--hue-main) + 50), 70%, 40% );
+}
+/* Dark Theme Variables */
+[data-theme="dark"] {
+	/* Main Colors */
+	--color-primary  : hsl( var(--hue-main), calc(var(--saturation-main) * 0.75), calc(var(--lightness-main) * 0.4) );
+	--color-secondary: hsl( var(--hue-main), calc(var(--saturation-main) * 0.75), calc(var(--lightness-main) * 1.0) );
+	--color-contrast : hsl( var(--hue-main), calc(var(--saturation-main) * 0.25), calc(var(--lightness-main) * 1.4) );
+	--color-primary-muted  : hsl( var(--hue-main), calc(var(--saturation-main) * 0.75), calc(var(--lightness-main) * 0.2) );
+	--color-secondary-muted: hsl( var(--hue-main), calc(var(--saturation-main) * 0.75), calc(var(--lightness-main) * 0.6) );
+	--color-contrast-muted : hsl( var(--hue-main), calc(var(--saturation-main) * 0.75), calc(var(--lightness-main) * 1.4) );
+
+	/* Legacy Colors */
+	--color-legacy-brighter: hsl(150, 80%, 70% );
+	--color-legacy-bright  : hsl(175, 80%, 60% );
+	--color-legacy         : hsl(200, 80%, 55% );
+	--color-legacy-dim     : hsl(225, 80%, 50% );
+	--color-legacy-dimmer  : hsl(250, 80%, 40% );
+	
+	/* Accent Colors */
+	--color-accent-brighter: hsl( calc(var(--hue-accent-1) - 30), calc(var(--saturation-accent) * 0.6), calc(var(--lightness-accent) * 1.4) );
+	--color-accent-bright  : hsl( calc(var(--hue-accent-1) - 15), calc(var(--saturation-accent) * 0.6), calc(var(--lightness-accent) * 1.2) );
+	--color-accent         : hsl( calc(var(--hue-accent-1) + 00), calc(var(--saturation-accent) * 0.6), calc(var(--lightness-accent) * 1  ) );
+	--color-accent-dim     : hsl( calc(var(--hue-accent-1) + 15), calc(var(--saturation-accent) * 0.6), calc(var(--lightness-accent) * 0.7) );
+	--color-accent-dimmer  : hsl( calc(var(--hue-accent-1) + 30), calc(var(--saturation-accent) * 0.6), calc(var(--lightness-accent) * 0.5) );
+	--color-accent-secondary-brighter: hsl( calc(var(--hue-accent-2) - 30), calc(var(--saturation-accent) * 0.6), calc(var(--lightness-accent) * 1.4) );
+	--color-accent-secondary-bright  : hsl( calc(var(--hue-accent-2) - 15), calc(var(--saturation-accent) * 0.6), calc(var(--lightness-accent) * 1.2) );
+	--color-accent-secondary         : hsl( calc(var(--hue-accent-2) + 00), calc(var(--saturation-accent) * 0.6), calc(var(--lightness-accent) * 1  ) );
+	--color-accent-secondary-dim     : hsl( calc(var(--hue-accent-2) + 15), calc(var(--saturation-accent) * 0.6), calc(var(--lightness-accent) * 0.7) );
+	--color-accent-secondary-dimmer  : hsl( calc(var(--hue-accent-2) + 30), calc(var(--saturation-accent) * 0.6), calc(var(--lightness-accent) * 0.5) );
+
+	--color-accent-muted-brighter: hsl( calc(var(--hue-accent-1) - 30), calc(var(--saturation-accent) * 0.3), calc(var(--lightness-accent) * 1.4) );
+	--color-accent-muted-bright  : hsl( calc(var(--hue-accent-1) - 15), calc(var(--saturation-accent) * 0.3), calc(var(--lightness-accent) * 1.2) );
+	--color-accent-muted         : hsl( calc(var(--hue-accent-1) + 00), calc(var(--saturation-accent) * 0.3), calc(var(--lightness-accent) * 1  ) );
+	--color-accent-muted-dim     : hsl( calc(var(--hue-accent-1) + 15), calc(var(--saturation-accent) * 0.3), calc(var(--lightness-accent) * 0.7) );
+	--color-accent-muted-dimmer  : hsl( calc(var(--hue-accent-1) + 30), calc(var(--saturation-accent) * 0.3), calc(var(--lightness-accent) * 0.5) );
+	--color-accent-muted-secondary-brighter: hsl( calc(var(--hue-accent-2) - 30), calc(var(--saturation-accent) * 0.3), calc(var(--lightness-accent) * 1.4) );
+	--color-accent-muted-secondary-bright  : hsl( calc(var(--hue-accent-2) - 15), calc(var(--saturation-accent) * 0.3), calc(var(--lightness-accent) * 1.2) );
+	--color-accent-muted-secondary         : hsl( calc(var(--hue-accent-2) + 00), calc(var(--saturation-accent) * 0.3), calc(var(--lightness-accent) * 1  ) );
+	--color-accent-muted-secondary-dim     : hsl( calc(var(--hue-accent-2) + 15), calc(var(--saturation-accent) * 0.3), calc(var(--lightness-accent) * 0.7) );
+	--color-accent-muted-secondary-dimmer  : hsl( calc(var(--hue-accent-2) + 30), calc(var(--saturation-accent) * 0.3), calc(var(--lightness-accent) * 0.5) );
+
+	/* Text Colors */
+	--color-text        : hsl( calc(var(--hue-main) + 5), 100%, 90% );
+	--color-text-inverse: hsl( calc(var(--hue-main) + 5), 100%, 10% );
+	--color-text-muted        : hsla( calc(var(--hue-main) + 5), 50%, 90%, 0.3 );
+	--color-text-muted-inverse: hsla( calc(var(--hue-main) + 5), 50%, 10%, 0.3 );
+
+	--color-text-h2: hsl( calc(var(--hue-main) + 25), 60%, 70% );
+	--color-text-h1: hsl( calc(var(--hue-main) - 10), 60%, 70% );
+	--color-text-h3: hsl( calc(var(--hue-main) + 50), 60%, 70% );
 }
 /*#endregion */
