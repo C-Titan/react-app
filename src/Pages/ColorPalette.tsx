@@ -6,7 +6,6 @@ export default function ColorPaletteShowcase() {
 
 				<div className="colors">
 					<div id="Base" className="box text">Base</div>
-					<div id="BaseMuted" className="box text">Muted</div>
 					<div id="BaseDim" className="box text">Dim</div>
 				</div>
 

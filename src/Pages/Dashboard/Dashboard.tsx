@@ -228,8 +228,7 @@ interface StepInsertProps {
 	title: string;
 	details?: string;
 	completed?: boolean;
-	color?:
-		| "red"
+	color?: "red"
 		| "orange"
 		| "yellow"
 		| "lime"
@@ -460,8 +459,6 @@ export default function Dashboard() {
 						mediaSource="https://thispersondoesnotexist.com/"
 						alt="Avatar"
 						width="7rem"
-						aspectRatio="1"
-						borderRadius="100%"
 					/>
 					<h1>{name}</h1>
 					<p>{email}</p>
@@ -481,10 +478,8 @@ export default function Dashboard() {
 			<section id="Main">
 				<div id="NavBar">
 					<div id="FolderLocation">
-						<a href="">Page</a>
-						<p>&gt;</p>
-						<a href="">Folder</a>
-						<p>&gt;</p>
+						<a href="">Page</a> <p>&gt;</p>
+						<a href="">Folder</a> <p>&gt;</p>
 						<p>Tasks</p>
 					</div>
 					<div id="NavOptions">

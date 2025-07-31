@@ -1,9 +1,7 @@
 
-import './index.css';
-import "./GlobalVariables.css";
-
 import { ThemeToggleButton } from "./Components/Objects/ThemeToggleButton";
 import ColorPaletteShowcase from "./Pages/ColorPalette";
+import InternManager from './Pages/Intern Manager/InternManager';
 //
 
 
@@ -11,10 +9,13 @@ function App() {
 	return (
 		<>
 			<ThemeToggleButton />
-			<ColorPaletteShowcase/>
+			{/* <ColorPaletteShowcase/> */}
+			<InternManager/>
 		</>
 	);
 }
 
 export default App;
 
+import './index.css';
+import "./GlobalVariables.css";

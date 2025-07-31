@@ -1,0 +1,424 @@
+
+/* * { outline: 1px dotted red; } */
+
+#InternManager {
+    background-color: var(--color-secondary-muted);
+	display: grid;
+	width : 100vw;
+	height: 100vh;
+
+	grid-template-columns: var(--sidebar-width) 1fr;
+	color: var(--color-text);
+
+	transition: grid-template-columns 0.3s ease;
+
+    --sidebar-width: 25%;
+}
+
+ul {
+	list-style-type: none;
+	list-style: none;
+
+	display: flex;
+	flex-direction: column;
+	gap: 2%;
+
+	padding: 0%;
+	margin: 0%;
+
+	width: 100%;
+}
+
+
+/*#region Sidebar */
+#SideBarToggle {
+    position: fixed;
+    top: 5%;
+    left: calc(var(--sidebar-width) - 1.5rem);
+    
+    box-shadow: var(--box-shadow-light);
+
+    width: 2.5rem;
+    aspect-ratio: 1;
+    font-size: 200%;
+}
+
+#SideBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5%;
+
+	background: var(--color-base);
+	box-shadow: var(--box-shadow-heavy);
+    padding: 4rem 1.5rem 0.5rem;
+	
+    color: var(--color-text-dark-bg);
+}
+
+    /*#region Sidebar Profile */
+    #SideBarProfile {
+        display: flex;
+        transform: scale(1.1);
+    }
+
+        #ProfilePic {
+            border-radius: var(--border-radius-3);
+            flex: 1;
+            width : 100%;
+            height: 100%;
+            aspect-ratio: 1;
+        }
+        
+        #ProfileText {
+            flex: 3;
+            margin-left: 5%;
+            text-align: left;
+            color: var(--color-text-dark-bg);
+        }
+    /*#endregion */
+
+    /*#region Sidebar Menu */
+    #SideBarMenu {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        height: 90%;
+        gap: 2%;
+    }
+        #SideBarMenu hr {
+            width: 80%;
+        }
+
+        /* #MainMenu, #OtherMenu {
+            text-align: left;
+        } */
+
+            #MenuItem {
+                font-size: var(--font-size-8);
+            }
+    /*#endregion */
+
+    /*#region Sidebar Footer */
+    #SideBarFooter {
+        display: flex;
+        align-content: center;
+        justify-content: end;
+    }
+    /*#endregion */
+/*#endregion */
+
+/*#region Main */
+/* #Main {
+    height: 100%;
+} */
+/*#endregion */
+
+/*#region Top Bar */
+#TopBar {
+    display: flex;
+    flex-direction: column;
+    gap: 20%;
+
+    padding: 2%;
+    padding-left: 4%;
+    padding-bottom: 0%;
+    width: 98%;
+}
+    #NavBar {
+        display: flex;
+        justify-content: space-between;
+        gap: 1%;
+    }
+        #PageLocation, #OtherLinks {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            font-size: var(--font-size-2);
+        }
+        #OtherLinks {
+            justify-content: end;
+        }
+            #NavBar a, #NavBar p {
+                color: var(--color-text-link);
+            }
+            #NavBar a:hover {
+                color: var(--color-text-link-highlight);
+            }
+            /* #OtherLinks a, #OtherLinks p {
+                color: var(--color-text-link);
+            } */
+            #OtherLinks a:hover {
+                text-decoration: 2px underline solid;
+            }
+    #TopBar h1 {
+        text-align: left;
+    }
+/*#endregion */
+
+
+/*#region Dashboard */
+#Dashboard {
+    padding: 2%;
+    padding-top: 1%;
+    /* height: 100%; */
+}
+
+    /*#region Actions Bar */
+    #ActionsBar {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0.25rem 0rem;
+    }
+        #QuickActionsButton {
+            border-radius: var(--border-radius-1);
+            font-size: var(--font-size-2);
+        }
+    /*#endregion */
+
+    /*#region Intern List View */
+    /* #InternListView {
+        height: 100%;
+    } */
+
+        /*#region Search By Filters */
+        .SearchByFilters {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.25rem 0rem;
+        }
+
+            /*#region Filters */
+            .Filters {
+                display: flex;
+                position: relative;
+                width: 50%;
+            }
+                .Filters ul {
+                    display: block;
+                    position: absolute;
+                    padding: 0;
+                    transition: all var(--transition-med);
+                    max-height: 0%;
+                    opacity: 0;
+                }
+                .Filters ul.expanded {
+                    position: relative;
+                    max-height: 100%;
+                    opacity: 1;
+                }
+                
+                    .item {
+                        display: inline-block;
+                        padding: 0.1rem;
+                        width: fit-content;
+                        font-size: var(--font-size-2);
+                    }
+
+                        .FilterItem {
+                            background-color: var(--color-accent-dim);
+                            border-radius: var(--border-radius-3);
+                            opacity: 75%;
+                        }
+                        .FilterItem:hover {
+                            background-color: var(--color-accent-bright);
+                            opacity: 100%;
+                        }
+                            .FilterItem p {
+                                color: var(--color-text);
+                            }
+                
+                .FilterButton {
+                    box-shadow: var(--box-shadow);
+                    position: absolute;
+                    border-radius: var(--border-radius-1);
+                    height: 2rem;
+                }
+            /*#endregion */
+            
+            /*#region Search Bar */
+            .SearchBar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                
+                background-color: var(--color-neutral-white);
+                border-radius: var(--border-radius-3);
+                box-shadow: var(--box-shadow);
+
+                width: 50%;
+                height: 2.25rem;
+
+                overflow: hidden;
+                transition: var(--transition-med);
+            }
+                .SearchBarField {
+                    background: none;
+                    border: none;
+
+                    padding: 0rem;
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+
+                    width: 100%;
+                    color: var(--color-text-light-bg);
+
+                    transition: all 0.3s ease;
+                }
+
+                    .SearchBarField::placeholder {
+                        font-style: italic;
+                        color: var(--color-neutral-light);
+                    }
+
+                    .SearchBarButton {
+                        background: none;
+                        border: none;
+                        border-radius: var(--border-radius-3);
+                        box-shadow: none;
+                        color: var(--color-neutral-light);
+                    }
+                    .SearchBarButton:hover {
+                        opacity: 75%;
+                        color: var(--color-neutral-dark);
+                    }
+            /*#endregion */
+    /*#endregion */
+        
+        /*#region Intern List */
+        #InternList {
+            height: auto;
+            padding: 0.5rem 0rem;
+        }
+            .EmptyList {
+                opacity: 10%;
+                font-size: var(--font-size-6);
+                font-weight: var(--font-weight-chunky);
+            }
+        
+            /*#region Intern Objects */
+            .InternObj {
+                display: flex;
+                align-content: center;
+                position: relative;
+                padding-top   : 0.25rem;
+                padding-bottom: 0.25rem;
+            }
+
+                .InternObjPfp {
+                    background-color: var(--color-contrast-muted);
+                    border-radius: var(--border-radius-3);
+                    position: absolute;
+                    width : 3rem;
+                    height: 3rem;
+                    z-index: 500;
+                }
+
+                .InternObjContent {
+                    background-color: var(--color-secondary);
+                    border-radius: var(--border-radius-2);
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 1rem;
+
+                    position: relative;
+                    left: 1.5rem;
+                    
+                    padding-left: 2.5rem;
+                    width: calc(100% - 1.5rem);
+                }
+                    /*#region Main Content */
+                    .ContentMain {
+                        align-content: center;
+                        width: 100%;
+                        min-height: 3rem;
+                        height: auto;
+                        max-height: 10rem;
+                    }
+
+                        /*#region Title */
+                        .InternObjTitleBar {
+                            display: flex;
+                            gap: 1rem;
+                            align-items: center;
+                            padding-top   : 1%;
+                            padding-bottom: 1%;
+                        }
+                            .InternObjTitleBar .name {
+                                font-size: var(--font-size-3);
+                                font-weight: var(--font-weight-chunky);
+                                color: var(--color-text);
+                            }
+                            .InternObjTitleBar .status {
+                                height: 1rem;
+                                font-size: var(--font-size-2);
+                                color: var(--color-text-dark-bg);
+                                text-align: center;
+                            }
+                                .InternObjTitleBar .status.working  { color: var(--color-green); }
+                                .InternObjTitleBar .status.inactive { color: var(--color-red); }
+                                .InternObjTitleBar .status.offline  { color: var(--color-text-muted); }
+                            
+                            .InternObj .icon {
+                                background: none;
+                                padding: 0rem;
+                                color: var(--color-text);
+                            }
+                        /*#endregion */
+                        
+                        /*#region Tasks */
+                        .InternObjTaskList {
+                            display: flex;
+                            flex-direction: column;
+                            background-color: var(--color-secondary-muted);
+                            border-radius: var(--border-radius-2);
+                            border-bottom-left-radius: 0;
+                            border-bottom-right-radius: 0;
+                            position: relative;
+                        }
+                            
+                            .ContentTaskList {
+                                font-size: var(--font-size-2);
+                                overflow: scroll;
+                            }
+
+                                .ContentTaskItem {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    padding: 0rem 1rem;
+                                }
+                                
+                            .InternObjTaskList .fade {
+                                background: linear-gradient(0deg, var(--color-secondary), #00000000);
+                                position: absolute;
+                                bottom: 0%;
+                                width: 100%;
+                                height: 2rem;
+                            }
+                        /*#endregion */
+                    /*#endregion */
+
+                    /*#region Notice Content */
+                    .ContentNotice {
+                        align-content: center;
+                        width: 60%;
+                        min-height: 3rem;
+                        max-height: 10rem;
+                    }
+                    /*#endregion */
+
+                    .InternObj .progress {
+                        height: 1rem;
+                        font-size: var(--font-size-2);
+                        color: var(--color-text);
+                        text-align: center;
+                    }
+            /*#endregion */
+        /*#endregion */
+    /*#endregion */
+/*#endregion */
+
+
+/*#region Top Bar */
+
+/*#endregion */

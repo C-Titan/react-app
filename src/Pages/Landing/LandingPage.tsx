@@ -87,7 +87,7 @@ interface ReviewCardProps {
 	review: string;
 }
 const ReviewCard = ({
-	profilePicPath = "https://thispersondoesnotexist.com/",
+	profilePicPath = "`https://robohash.org/${Math.random()}`/",
 	profiltPicAlt = "P",
 	username = "John Doe",
 	jobTitle,

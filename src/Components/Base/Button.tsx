@@ -9,6 +9,7 @@ interface ButtonProps {
 	type?: "button" | "submit" | "reset" | undefined;
 
 	href?: string;
+	target?: "_blank" | "_parent" | "_top" | "_self";
 	loading?: true;
 	disabled?: true;
 
@@ -31,6 +32,7 @@ export const Button: React.FC<ButtonProps> = ({
 	variant = "default",
 	type = "button",
 	href = "",
+	target = "_blank",
 	loading,
 	disabled,
 
@@ -69,7 +71,7 @@ export const Button: React.FC<ButtonProps> = ({
 		return (
 			<a
 				id={id}
-				href={href}
+				href={href} target={target}
 				className={_className}
 				onClick={onClick}
 				aria-label={ariaLabel || id}

@@ -36,11 +36,11 @@ export function ThemeToggleButton() {
 	// The themes are defined in the CSS and can be applied to the document.
 	const themeOptions = [
 		"legacy",
+		"dirt",
 		"marine",
 		"purple",
-		// "hellscape",
+		"hellscape",
 		"dragonfruit",
-		"passionfruit",
 	] as const;
 	const storedTheme = localStorage.getItem("theme") ?? "legacy";
 	const [themeId, setThemeId] = useState(

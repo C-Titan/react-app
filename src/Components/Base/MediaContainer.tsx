@@ -1,27 +1,20 @@
-
 import "./MediaContainer.css";
 import { useEffect, useState, useRef, useId } from "react";
 
 interface MediaProps {
 	id?: string;
 	title?: string;
-    className?: string;
-	
-    href?: string;
-    
-    width    ?: string;
-    height   ?: string;
-    minWidth ?: string;
-    minHeight?: string;
-    maxWidth ?: string;
-    maxHeight?: string;
-    aspectRatio?: string;
-    borderRadius?: string;
-	
+	className?: string;
+
+	href?: string;
+
+	width?: string;
+	height?: string;
+
 	mediaSource?: string;
 	placeholderSource?: string;
 
-    ariaLabel?: string;
+	ariaLabel?: string;
 	ariaDescribedBy?: string;
 
 	children?: React.ReactNode;
@@ -31,36 +24,24 @@ interface MediaProps {
 export const MediaContainer = ({
 	id,
 	title,
-    className = "",
-	
+	className = "",
+
 	width,
 	height,
-	maxWidth,
-	maxHeight,
-	minWidth,
-	minHeight,
-	aspectRatio,
-    borderRadius,
-	
-    ariaLabel = title,
+
+	ariaLabel = title,
 	ariaDescribedBy = title,
 
-	children
+	children,
 }: MediaProps) => {
 	return (
 		<figure
-			id={ id || useId() }
+			id={id || useId()}
 			className={"Container" + " " + className}
 			style={{
-				borderRadius,
 				width: width,
 				height,
-				maxWidth,
-				maxHeight,
-				minWidth,
-				minHeight,
-				aspectRatio,
-				overflow: "hidden"
+				overflow: "hidden",
 			}}
 			aria-label={ariaLabel}
 			aria-describedby={ariaDescribedBy}
@@ -91,30 +72,30 @@ const Video: React.FC<VideoProps> = ({
 	preload,
 	autoPlay,
 	controls,
-	
+
 	isPlaying = false,
 
-    mediaSource,
-	placeholderSource ="https://www.w3schools.com/html/mov_bbb.mp4",
-	
+	mediaSource,
+	placeholderSource = "https://www.w3schools.com/html/mov_bbb.mp4",
+
 	...props
 }) => {
 	const source = mediaSource || placeholderSource;
-    const makePlaceholder = !mediaSource ? " placeholder" : "";
+	const makePlaceholder = !mediaSource ? " placeholder" : "";
 	const vidProps: React.VideoHTMLAttributes<HTMLVideoElement> = {
 		loop,
 		muted,
 		poster,
 		preload,
 		autoPlay,
-		controls
-	}
+		controls,
+	};
 	const [playback, setPlayback] = useState<boolean>(true);
 
 	const ref = useRef<HTMLVideoElement>(null);
 	useEffect(() => {
 		if (isPlaying) {
-			ref.current?.play();  // Calling these while rendering isn't allowed.
+			ref.current?.play(); // Calling these while rendering isn't allowed.
 		} else {
 			ref.current?.pause(); // Also, this crashes.
 		}
@@ -122,43 +103,45 @@ const Video: React.FC<VideoProps> = ({
 
 	return (
 		<MediaContainer className={className + makePlaceholder} {...props}>
-			<video 
+			<video
 				src={source}
 				className={className + " Media"}
 				ref={ref}
-				{...vidProps} 
+				{...vidProps}
 			/>
 			<button onClick={() => setPlayback(!playback)}>⏯️</button>
 		</MediaContainer>
-	)
-}
+	);
+};
 //#endregion
 
 //#region Image
 type ImageProps = MediaProps & {
-	alt: string;
+	alt?: string;
 	target?: "_blank" | "_self" | "_parent" | "_top";
-}
+};
 const Image: React.FC<ImageProps> = ({
 	id,
-	alt = id || "Media content",
-    className = "",
+	alt = id,
+	className = "",
 
 	href,
 	target = "_blank",
 
-    mediaSource,
-	placeholderSource = "https://thispersondoesnotexist.com/",
+	mediaSource,
+	placeholderSource = "`https://robohash.org/${Math.random()}`/",
 
 	...props
 }) => {
 	const source = mediaSource || placeholderSource;
-    const makePlaceholder = !mediaSource ? " placeholder" : "";
+	const makePlaceholder = !mediaSource ? " placeholder" : "";
 	const content = (
 		<img src={source} alt={alt} className={className + "-img" + " Media"} />
 	);
 	const hrefContent = (
-		<a href={href} target={target}>{content}</a>
+		<a href={href} target={target}>
+			{content}
+		</a>
 	);
 
 	return (
@@ -166,12 +149,12 @@ const Image: React.FC<ImageProps> = ({
 			{href ? hrefContent : content}
 		</MediaContainer>
 	);
-}
+};
 //#endregion
 
 //#region IFrame
 type IframeProps = Omit<MediaProps, "href" | "children" | "alt"> & {
-	allow?: string
+	allow?: string;
 	allowFullScreen?: boolean;
 	allowPaymentRequest?: boolean;
 	loading?: "eager" | "lazy";
@@ -179,8 +162,8 @@ type IframeProps = Omit<MediaProps, "href" | "children" | "alt"> & {
 	referrerPolicy?: string;
 	sandbox?: string;
 	sourceCode?: string;
-}
-const Iframe: React.FC<IframeProps> =({
+};
+const Iframe: React.FC<IframeProps> = ({
 	title,
 	className,
 
@@ -192,26 +175,24 @@ const Iframe: React.FC<IframeProps> =({
 	sandbox,
 	sourceCode,
 
-    mediaSource,
+	mediaSource,
 	placeholderSource,
-	
-	
+
 	...props
 }) => {
-	const source = mediaSource || placeholderSource
-    const makePlaceholder = !mediaSource ? " placeholder" : "";
+	const source = mediaSource || placeholderSource;
+	const makePlaceholder = !mediaSource ? " placeholder" : "";
 	const iframeProps: React.IframeHTMLAttributes<HTMLIFrameElement> = {
 		allowFullScreen,
 		loading,
 		allow,
 		name,
 		sandbox,
-		src: sourceCode || source
+		src: sourceCode || source,
 	};
 
 	return (
-		<MediaContainer className={className + makePlaceholder} {...props} 
-		>
+		<MediaContainer className={className + makePlaceholder} {...props}>
 			<iframe
 				className="Media"
 				title={title || "Embedded Content"}
@@ -219,20 +200,19 @@ const Iframe: React.FC<IframeProps> =({
 			/>
 		</MediaContainer>
 	);
-}
+};
 //#endregion
 
 //#Export
-MediaContainer.Video  = Video
-MediaContainer.Image  = Image
-MediaContainer.Iframe = Iframe
+MediaContainer.Video = Video;
+MediaContainer.Image = Image;
+MediaContainer.Iframe = Iframe;
 
 type CompoundMediaContainer = React.FC<MediaProps> & {
-	Video : React.FC<VideoProps>;
-	Image : React.FC<ImageProps>;
+	Video: React.FC<VideoProps>;
+	Image: React.FC<ImageProps>;
 	Iframe: React.FC<IframeProps>;
-}
+};
 
 export default MediaContainer as CompoundMediaContainer;
 //#endregion
-

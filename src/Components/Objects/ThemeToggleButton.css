@@ -41,7 +41,7 @@
 	}
 }
 #ThemeToggle {
-	background-color: hsl(var(--hue-main), var(--saturation-main), var(--lightness-main));
+	background-color: hsl(var(--main-hue), calc(var(--base-saturation) * 0.5), calc(var(--base-lightness) * 0.5));
 	width: 3rem;
 	aspect-ratio: 1;
 

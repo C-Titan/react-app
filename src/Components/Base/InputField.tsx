@@ -3,7 +3,7 @@ import { BiLockOpenAlt, BiLockAlt } from "react-icons/bi";
 import "./inputField.css";
 
 
-export interface FieldProps {
+interface FieldProps {
 	id?: string;
 	label?: string;
 	formId?: string;

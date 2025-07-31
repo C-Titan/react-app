@@ -65,7 +65,7 @@
 }
 
 .text {
-	background-color: var(--color-base-dim);
+	background-color: var(--color-secondary);
 	border-radius: var(--border-radius-1);
 	display: flex;
 	align-items: center;
