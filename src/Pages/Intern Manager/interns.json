@@ -1,14 +1,236 @@
-[
-    {
-        "name": "Jessie Jones",
-        "color": "green"
-    },
-    {
-        "name": "Micha O'Conner",
-        "color": "red"
-    },
-    {
-        "name": "Flint Claw",
-        "color": "blue"
-    }
-]
+{  
+    "Interns" : [
+        {
+            "name": "Jessie Alba",
+            "tags": [],
+            "profilePic": "",
+            "status": "inactive",
+            "tasks": [
+                {
+                    "index": "0",
+                    "tags": [],
+                    "name": "Do this.",
+                    "progress": "pending"
+                },
+                {
+                    "index": "1",
+                    "tags": [],
+                    "name": "Do that now!",
+                    "progress": "pending"
+                },
+                {
+                    "index": "2",
+                    "tags": [],
+                    "name": "Do this again.",
+                    "progress": "pending"
+                }
+            ],
+            "chats": {
+                "storage": "",
+                "logs" : [
+                    {
+                        "senderId": "0",
+                        "status": "unsent",
+                        "message": "YOU",
+                        "attatchmentPath": "",
+                        "timeSent": ""
+                    },
+                    {
+                        "senderId": "0",
+                        "status": "unsent",
+                        "message": "YOU",
+                        "attatchmentPath": "",
+                        "timeSent": ""
+                    },
+                    {
+                        "senderId": "0",
+                        "status": "unsent",
+                        "message": "YOU",
+                        "attatchmentPath": "",
+                        "timeSent": ""
+                    },
+                    {
+                        "senderId": "0",
+                        "status": "unsent",
+                        "message": "YOU",
+                        "attatchmentPath": "",
+                        "timeSent": ""
+                    },
+                    {
+                        "senderId": "0",
+                        "status": "unsent",
+                        "message": "YOU",
+                        "attatchmentPath": "",
+                        "timeSent": ""
+                    },
+                    {
+                        "senderId": "0",
+                        "status": "unsent",
+                        "message": "YOU",
+                        "attatchmentPath": "",
+                        "timeSent": ""
+                    },
+                    {
+                        "senderId": "0",
+                        "status": "unsent",
+                        "message": "YOU",
+                        "attatchmentPath": "",
+                        "timeSent": ""
+                    },
+                    {
+                        "senderId": "0",
+                        "status": "unsent",
+                        "message": "YOU",
+                        "attatchmentPath": "",
+                        "timeSent": ""
+                    },
+                    {
+                        "senderId": "0",
+                        "status": "unsent",
+                        "message": "YOU",
+                        "attatchmentPath": "",
+                        "timeSent": ""
+                    },
+                    {
+                        "senderId": "0",
+                        "status": "unsent",
+                        "message": "YOU",
+                        "attatchmentPath": "",
+                        "timeSent": ""
+                    },
+                    {
+                        "senderId": "0",
+                        "status": "unsent",
+                        "message": "YOU",
+                        "attatchmentPath": "",
+                        "timeSent": ""
+                    }
+                ]
+            },
+            "notice": []
+        },
+      
+        {
+            "name": "Paul Rudd",
+            "tags": [],
+            "profilePic": "",
+            "status": "inactive",
+            "tasks": [
+                {
+                    "index": "0",
+                    "tags": [],
+                    "name": "This is Paul's first task",
+                    "progress": "pending"
+                },
+                {
+                    "index": "2",
+                    "tags": [],
+                    "name": "Do this again.",
+                    "progress": "pending"
+                }
+            ],
+            "chats": {
+                "storage": "",
+                "logs" : [
+                    {
+                        "senderId": "0",
+                        "status": "unsent",
+                        "message": "Hi, I'm aunt man :-)",
+                        "timeSent": ""
+                    }
+                ]
+            },
+            "notice": []
+        },
+        
+        {
+            "name": "Jeremy Renner",
+            "tags": [],
+            "profilePic": "",
+            "status": "inactive",
+            "tasks": [
+                {
+                    "index": "0",
+                    "tags": [],
+                    "name": "Do this.",
+                    "progress": "pending"
+                },
+                {
+                    "index": "1",
+                    "tags": [],
+                    "name": "Do that now!",
+                    "progress": "pending"
+                },
+                {
+                    "index": "2",
+                    "tags": [],
+                    "name": "Do this again.",
+                    "progress": "pending"
+                }
+            ],
+            "chats": {
+                "storage": "",
+                "logs" : [
+                    {
+                        "senderId": "0",
+                        "status": "unsent",
+                        "message": "Bing bong bing bong.",
+                        "timeSent": ""
+                    },
+                    {
+                        "senderId": "0",
+                        "status": "unsent",
+                        "message": "TONY STARK BUILT THIS IN A CAVE!!!",
+                        "timeSent": ""
+                    }
+                ]
+            },
+            "notice": []
+        },
+        
+        {
+            "name": "Scarlet Johanson",
+            "tags": [],
+            "profilePic": "",
+            "status": "inactive",
+            "tasks": [
+                {
+                    "index": "0",
+                    "tags": [],
+                    "name": "Do this.",
+                    "progress": "pending"
+                },
+                {
+                    "index": "1",
+                    "tags": [],
+                    "name": "Do that now!",
+                    "progress": "pending"
+                }
+            ],
+            "chats": {
+                "storage": "",
+                "logs" : [
+                    {
+                        "senderId": "0",
+                        "status": "unsent",
+                        "message": "I got red in my ledger.",
+                        "timeSent": ""
+                    },
+                    {
+                        "senderId": "0",
+                        "status": "unsent",
+                        "message": "I'd like to clear it up.",
+                        "timeSent": ""
+                    },
+                    {
+                        "senderId": "0",
+                        "status": "unsent",
+                        "message": "It's okay big guy",
+                        "timeSent": ""
+                    }
+                ]
+            },
+            "notice": []
+        }
+    ]
+}

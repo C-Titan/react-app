@@ -1,18 +1,33 @@
 
 /* * { outline: 1px dotted red; } */
+* { transition: all 0.5s ease-in-out; }
 
 #InternManager {
     background-color: var(--color-secondary-muted);
 	display: grid;
 	width : 100vw;
 	height: 100vh;
+    min-width: 350px;
 
 	grid-template-columns: var(--sidebar-width) 1fr;
 	color: var(--color-text);
 
 	transition: grid-template-columns 0.3s ease;
 
-    --sidebar-width: 25%;
+    --sidebar-width: 20%;
+    
+    @media (width <= 1200px) {
+        --sidebar-width: 25%;
+    }
+    @media (width <= 750px) {
+        --sidebar-width: 30%;
+    }
+    @media (width <= 550px) {
+        --sidebar-width: 100%;
+    }
+}
+#InternManager.sidebarClose {
+    --sidebar-width: 0%;
 }
 
 ul {
@@ -29,11 +44,10 @@ ul {
 	width: 100%;
 }
 
-
 /*#region Sidebar */
 #SideBarToggle {
     position: fixed;
-    top: 5%;
+    top: 5vh;
     left: calc(var(--sidebar-width) - 1.5rem);
     
     box-shadow: var(--box-shadow-light);
@@ -41,6 +55,12 @@ ul {
     width: 2.5rem;
     aspect-ratio: 1;
     font-size: 200%;
+
+    z-index: 800;
+
+    @media (width <= 500px) {
+        top: 8vh;
+    }
 }
 
 #SideBar {
@@ -49,32 +69,53 @@ ul {
     justify-content: space-between;
     gap: 5%;
 
-	background: var(--color-base);
+	background: linear-gradient(180deg, var(--color-base-dim) 30%, var(--color-base) 90%);
 	box-shadow: var(--box-shadow-heavy);
     padding: 4rem 1.5rem 0.5rem;
 	
     color: var(--color-text-dark-bg);
+    
+    @media (width <= 500px) {
+        padding: 3rem 1.5rem 0.25rem;
+        box-shadow: none;
+    }
+}
+#SideBar.close {
+    width: 300px;
+    transform: translate(-300px);
 }
 
     /*#region Sidebar Profile */
     #SideBarProfile {
         display: flex;
-        transform: scale(1.1);
+        flex-direction: column;
+        position: relative;
+        width: 100%;
     }
 
-        #ProfilePic {
+        .MainProfilePic {
+            background-color: var(--color-contrast-muted);
             border-radius: var(--border-radius-3);
-            flex: 1;
-            width : 100%;
-            height: 100%;
-            aspect-ratio: 1;
+            
+            grid-row: span 2;
+            position: absolute;
+            bottom: 0%;
+            
+            width : 4rem;
+            height: 4rem;
+
+            /* @media (width <= 800px) {
+                position: relative;
+            } */
         }
-        
-        #ProfileText {
-            flex: 3;
-            margin-left: 5%;
+        .MainProfileText {
+            background: linear-gradient(90deg, #00000000 0%, var(--color-base-dim) 20%);
+            margin-left: 0.5rem;
+            position: relative;
+            left: 20%;
+            width: 80%;
             text-align: left;
-            color: var(--color-text-dark-bg);
+            z-index: 100;
         }
     /*#endregion */
 
@@ -85,18 +126,36 @@ ul {
         align-content: center;
         height: 90%;
         gap: 2%;
+        overflow: hidden;
+        overflow-y: scroll;
     }
-        #SideBarMenu hr {
-            width: 80%;
+        #MainMenu {
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
         }
 
-        /* #MainMenu, #OtherMenu {
-            text-align: left;
-        } */
-
-            #MenuItem {
-                font-size: var(--font-size-8);
+            .MenuItem {
+                display: flex;
+                flex-direction: column;
+                gap: 2%;
+                justify-content: left;
+                padding: 0.25rem 0rem;
+                /* font-size: var(--font-size-4); */
             }
+
+            .MenuItem div {
+                text-align: left;
+            }
+            .MenuItem a:hover {
+                color: var(--color-text-link-highlight);
+            }
+
+                .MenuFolderChildren {
+                    position: relative;
+                    left: 15%;
+                    width: 85%;
+                }
     /*#endregion */
 
     /*#region Sidebar Footer */
@@ -109,77 +168,72 @@ ul {
 /*#endregion */
 
 /*#region Main */
-/* #Main {
-    height: 100%;
-} */
-/*#endregion */
-
-/*#region Top Bar */
-#TopBar {
-    display: flex;
-    flex-direction: column;
-    gap: 20%;
-
-    padding: 2%;
-    padding-left: 4%;
-    padding-bottom: 0%;
-    width: 98%;
+#Main {
+	background: linear-gradient(0deg, var(--color-primary) 30%, var(--color-primary-muted) 90%);
 }
-    #NavBar {
+
+    /*#region Top Bar */
+    #TopBar {
         display: flex;
-        justify-content: space-between;
-        gap: 1%;
+        flex-direction: column;
+        gap: 20%;
+
+        padding: 2%;
+        padding-left: 4%;
+        padding-bottom: 0%;
+        width: 98%;
     }
-        #PageLocation, #OtherLinks {
+        #NavBar {
             display: flex;
-            flex-direction: row;
-            width: 100%;
-            font-size: var(--font-size-2);
+            justify-content: space-between;
+            gap: 1%;
+            position: relative;
         }
-        #OtherLinks {
-            justify-content: end;
-        }
-            #NavBar a, #NavBar p {
-                color: var(--color-text-link);
+            #PageLocation, #OtherLinks {
+                display: flex;
+                flex-direction: row;
+                width: 40%;
+                font-size: var(--font-size-2);
             }
-            #NavBar a:hover {
-                color: var(--color-text-link-highlight);
+            
+            #PageLocation {
+                width: 100%;
             }
-            /* #OtherLinks a, #OtherLinks p {
-                color: var(--color-text-link);
-            } */
-            #OtherLinks a:hover {
-                text-decoration: 2px underline solid;
+            #OtherLinks {
+                justify-content: right;
             }
-    #TopBar h1 {
-        text-align: left;
-    }
-/*#endregion */
-
-
-/*#region Dashboard */
-#Dashboard {
-    padding: 2%;
-    padding-top: 1%;
-    /* height: 100%; */
-}
-
-    /*#region Actions Bar */
-    #ActionsBar {
-        display: flex;
-        justify-content: flex-end;
-        padding: 0.25rem 0rem;
-    }
-        #QuickActionsButton {
-            border-radius: var(--border-radius-1);
-            font-size: var(--font-size-2);
+                #NavBar a, #NavBar p {
+                    justify-self: left;
+                    color: var(--color-text-link);
+                }
+                #NavBar a:hover {
+                    color: var(--color-text-link-highlight);
+                }
+                #OtherLinks a:hover {
+                    text-decoration: 2px underline solid;
+                }
+        #TopBar h1 {
+            text-align: left;
         }
     /*#endregion */
 
-    /*#region Intern List View */
-    /* #InternListView {
-        height: 100%;
-    } */
+    /*#region Dashboard */
+    #Dashboard {
+        padding: 2%;
+        padding-top: 1%;
+    }
+
+        /*#region Actions Bar */
+        #ActionsBar {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0.25rem 0rem;
+        }
+            #QuickActionsButton {
+                border-radius: var(--border-radius-1);
+                font-size: var(--font-size-2);
+            }
+        /*#endregion */
 
         /*#region Search By Filters */
         .SearchByFilters {
@@ -207,84 +261,94 @@ ul {
                     max-height: 100%;
                     opacity: 1;
                 }
-                
-                    .item {
+            
+                    .FilterItem {
                         display: inline-block;
-                        padding: 0.1rem;
+                        opacity: 75%;
+                        background-color: var(--color-accent-dim);
+                        border-radius: var(--border-radius-3);
+                        padding: 0.2rem 0.5rem;
                         width: fit-content;
                         font-size: var(--font-size-2);
                     }
+                    .FilterItem:hover {
+                        background-color: var(--color-accent-bright);
+                        opacity: 100%;
+                    }
+                    .FilterItem p {
+                        display: flex;
+                        align-items: center;
+                    }
 
-                        .FilterItem {
-                            background-color: var(--color-accent-dim);
-                            border-radius: var(--border-radius-3);
-                            opacity: 75%;
-                        }
-                        .FilterItem:hover {
-                            background-color: var(--color-accent-bright);
-                            opacity: 100%;
-                        }
-                            .FilterItem p {
-                                color: var(--color-text);
-                            }
-                
                 .FilterButton {
+                    background-color: var(--color-accent-bright);
+                    border-radius: var(--border-radius-1);
                     box-shadow: var(--box-shadow);
                     position: absolute;
-                    border-radius: var(--border-radius-1);
                     height: 2rem;
                 }
             /*#endregion */
             
             /*#region Search Bar */
-            .SearchBar {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                
-                background-color: var(--color-neutral-white);
-                border-radius: var(--border-radius-3);
-                box-shadow: var(--box-shadow);
+                .SearchBar {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    
+                    /* background-color: var(--color-primary); */
+                    background: linear-gradient(90deg, var(--color-primary), #00000000);
+                    border-radius: var(--border-radius-3);
+                    box-shadow: var(--box-shadow);
 
-                width: 50%;
-                height: 2.25rem;
+                    width : 50%;
+                    height: 2.25rem;
 
-                overflow: hidden;
-                transition: var(--transition-med);
-            }
-                .SearchBarField {
-                    background: none;
-                    border: none;
+                    overflow: hidden;
+                    transition: var(--transition-med);
 
-                    padding: 0rem;
-                    padding-left: 1rem;
-                    padding-right: 1rem;
-
-                    width: 100%;
-                    color: var(--color-text-light-bg);
-
-                    transition: all 0.3s ease;
+                    /* @media (width <= 500px) {
+                        width: 2.25rem;
+                    } */
+                }
+                .SearchBar.mini {
+                    width: 2.25rem;
                 }
 
-                    .SearchBarField::placeholder {
-                        font-style: italic;
-                        color: var(--color-neutral-light);
-                    }
-
-                    .SearchBarButton {
+                    .SearchBarField {
                         background: none;
                         border: none;
-                        border-radius: var(--border-radius-3);
-                        box-shadow: none;
-                        color: var(--color-neutral-light);
+                        outline: none;
+
+                        padding: 0rem;
+                        padding-left: 1rem;
+                        padding-right: 1rem;
+
+                        width: 100%;
+                        color: var(--color-text);
+
+                        transition: all 0.3s ease;
                     }
-                    .SearchBarButton:hover {
-                        opacity: 75%;
-                        color: var(--color-neutral-dark);
-                    }
-            /*#endregion */
-    /*#endregion */
-        
+
+                        .SearchBarField::placeholder {
+                            font-style: italic;
+                            color: var(--color-neutral-light);
+                        }
+
+                        .SearchBarButton {
+                            background: none;
+                            border: none;
+                            border-radius: var(--border-radius-3);
+                            box-shadow: none;
+                            color: var(--color-neutral-light);
+                            /* width: ; */
+                        }
+                        .SearchBarButton:hover {
+                            opacity: 75%;
+                            color: var(--color-neutral-dark);
+                        }
+                /*#endregion */
+        /*#endregion */
+            
         /*#region Intern List */
         #InternList {
             height: auto;
@@ -312,10 +376,16 @@ ul {
                     width : 3rem;
                     height: 3rem;
                     z-index: 500;
+                    
+                    @media (width <= 500px) {
+                        width : 3.5rem;
+                        height: 3.5rem;
+                    }
                 }
 
                 .InternObjContent {
-                    background-color: var(--color-secondary);
+                    /* background-color: var(--color-secondary); */
+                    background: linear-gradient(90deg, var(--color-secondary), var(--color-secondary-muted));
                     border-radius: var(--border-radius-2);
                     display: flex;
                     justify-content: space-between;
@@ -343,17 +413,33 @@ ul {
                             align-items: center;
                             padding-top   : 1%;
                             padding-bottom: 1%;
+                            
+                            @media (width <= 500px) {
+                                display: grid;
+                                grid-template-columns: 1fr 2fr 1fr;
+                                grid-template-rows: auto;
+                                gap: 0rem;
+                            }
                         }
+                        .InternObjTitleBar .gridItem:nth-child(1) { grid-column: span 2; grid-row: 1; }
+                        .InternObjTitleBar .gridItem:nth-child(2) { grid-column: 1; grid-row: 2; }
+                        .InternObjTitleBar .gridItem:nth-child(3) { grid-column: 2; grid-row: 2; }
+                        .InternObjTitleBar .gridItem:nth-child(4) { grid-column: 3; grid-row: 1; }
+                        .InternObjTitleBar .gridItem:nth-child(5) { grid-column: 3; grid-row: 2; }
+
                             .InternObjTitleBar .name {
+                                justify-self: left;
                                 font-size: var(--font-size-3);
                                 font-weight: var(--font-weight-chunky);
                                 color: var(--color-text);
                             }
                             .InternObjTitleBar .status {
+                                justify-self: left;
                                 height: 1rem;
                                 font-size: var(--font-size-2);
                                 color: var(--color-text-dark-bg);
                                 text-align: center;
+                                grid: 1fr;
                             }
                                 .InternObjTitleBar .status.working  { color: var(--color-green); }
                                 .InternObjTitleBar .status.inactive { color: var(--color-red); }
@@ -361,6 +447,7 @@ ul {
                             
                             .InternObj .icon {
                                 background: none;
+                                justify-content: right;
                                 padding: 0rem;
                                 color: var(--color-text);
                             }
@@ -408,6 +495,7 @@ ul {
                     /*#endregion */
 
                     .InternObj .progress {
+                        justify-self: left;
                         height: 1rem;
                         font-size: var(--font-size-2);
                         color: var(--color-text);
@@ -415,10 +503,7 @@ ul {
                     }
             /*#endregion */
         /*#endregion */
+        /*#endregion */
     /*#endregion */
-/*#endregion */
-
-
-/*#region Top Bar */
 
 /*#endregion */

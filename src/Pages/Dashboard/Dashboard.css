@@ -28,7 +28,6 @@
 		Sidebar name and email should be hidden from sidebar when the screen size is beloe 750px. Profile pic, also should be shrunken, hidden and/or stylaized for fun
 	*/
 	.sideBarClosed {
-		/* grid-template-columns: 0 1fr; */
 		--sidebar-width: 0%;
 	}
 
@@ -345,7 +344,7 @@ ul {
 
 /*#region === Add Task === */
 .AddTaskButton {
-	background-color: var(--color-base-muted);
+	background-color: var(--color-base-dim);
 	border-radius: var(--border-radius-1);
 	font-size: var(--font-size-5);
 }

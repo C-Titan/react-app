@@ -16,6 +16,3 @@ function App() {
 }
 
 export default App;
-
-import './index.css';
-import "./GlobalVariables.css";

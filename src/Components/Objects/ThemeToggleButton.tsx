@@ -49,7 +49,7 @@ export function ThemeToggleButton() {
 	const currentTheme = themeOptions[themeId];
 
 	const cycleTheme = () => {
-		setThemeId((themeId + 1) % themeOptions.length);
+		// setThemeId((themeId + 1) % themeOptions.length);
 	};
 
 	// Apply the current theme and mode to the document and store them in localStorage

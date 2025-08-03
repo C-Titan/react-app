@@ -96,7 +96,7 @@ div {
 
 #Base      { background-color: var(--color-base); }
 #BaseDim   { background-color: var(--color-base-dim); }
-#BaseMuted { background-color: var(--color-base-muted); }
+#BaseMuted { background-color: var(--color-base-dim); }
 
 #NeutralBlack { background-color: var(--color-neutral-black); }
 #NeutralDark  { background-color: var(--color-neutral-dark); }

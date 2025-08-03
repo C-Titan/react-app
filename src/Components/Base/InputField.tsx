@@ -1,6 +1,6 @@
 import React, { useId, useState } from "react";
-import { BiLockOpenAlt, BiLockAlt } from "react-icons/bi";
 import "./inputField.css";
+import { FaEye, FaRegEyeSlash } from "react-icons/fa";
 
 
 interface FieldProps {
@@ -90,8 +90,7 @@ const Field: React.FC<FieldProps> = ({
 						type = "button"
 						onClick = {() => setShow(prev => !prev)}
 					>
-						{show ? <BiLockOpenAlt/> : <BiLockAlt/>}
-						{/* {show ? '👁️' : '🙈'} */}
+						{show ? <FaEye/> : <FaRegEyeSlash/>}
 					</button>
 				)}
 			</div>
